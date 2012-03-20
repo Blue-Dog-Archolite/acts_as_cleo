@@ -2,10 +2,11 @@ require 'simplecov'
 SimpleCov.start
 
 
+require 'rails'
 require 'rubygems'
 require 'bundler'
-require 'rails'
 require 'active_record'
+require 'net/http'
 
 begin
   Bundler.setup(:default, :development)

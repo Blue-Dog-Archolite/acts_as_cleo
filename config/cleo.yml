@@ -4,7 +4,7 @@
 # them in your Solr config file
 
 development:
-  url: http://localhost:8982/solr
+  url: "http://cleo.neighborhoods.com/cleo-primer/rest/elements/"
 
 production:
-  url: http://localhost:8983/solr
+  url: "http://cleo.neighborhoods.com/cleo-primer/rest/elements/"
