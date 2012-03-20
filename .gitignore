@@ -1,9 +1,16 @@
+# Ignore bundler config
+/.bundle
+Gemfile.lock
+
+#rvm
+/.rvmrc
+.rvmrc
+
 *.gem
 *.rbc
 .bundle
 .config
 .yardoc
-Gemfile.lock
 InstalledFiles
 _yardoc
 coverage
