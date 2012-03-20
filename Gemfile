@@ -14,3 +14,4 @@ group :development do
 end
 
 gem 'happymapper'
+gem 'rails', '>= 3.1.0'

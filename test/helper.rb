@@ -4,6 +4,9 @@ SimpleCov.start
 
 require 'rubygems'
 require 'bundler'
+require 'rails'
+require 'active_record'
+
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e

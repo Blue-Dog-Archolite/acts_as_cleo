@@ -1,25 +1,22 @@
-require 'active_record'
-require 'active_support'
+#load Cleo Module for result
+require File.dirname(__FILE__) + '/cleo'
 
-#require File.dirname(__FILE__) + '/cleo'
 require File.dirname(__FILE__) + '/acts_methods'
 require File.dirname(__FILE__) + '/class_methods'
 require File.dirname(__FILE__) + '/instance_methods'
 require File.dirname(__FILE__) + '/common_methods'
 
-#require File.dirname(__FILE__) + '/deprecation'
-#require File.dirname(__FILE__) + '/search_results'
-
-
 module ActsAsCleo
   @@cleo_server_loction = {:url => 'http://localhost:8982/solr' }
 
-#  extend ActiveSupport::Concern
+  extend ClassMethods
+  include InstanceMethods
+  include CommonMethods
 end
 
-=begin
-ActiveRecord::Base.extend ActsAsCleo::ActsMethods
+ActiveRecord::Base.extend ActsAsCleo
 
+=begin
 cleo_file_path = File.join( RAILS_ROOT, 'config', 'cleo.yml' )
 
 if File.exists?( cleo_file_path )

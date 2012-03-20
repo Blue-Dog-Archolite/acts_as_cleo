@@ -1,6 +1,6 @@
-require "#{File.dirname(File.expand_path(__FILE__))}/../test_helper"
+require "#{File.dirname(File.expand_path(__FILE__))}/../helper"
 
-class ResultTest < Test::Unit::TestCase
+class TestResult < Test::Unit::TestCase
   def test_parser_gets_correct_element
     file = File.open("#{Dir.pwd}/test/data/xml/cleo/element.xml")
     contents = file.read
