@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<element-list>
+  <element>
+    <term>google</term>
+    <term>inc.</term>
+    <term>goog</term>
+    <id>1063</id>
+    <name>Google Inc. (GOOG)</name>
+    <score>159350.0</score>
+    <timestamp>1331833525493</timestamp>
+    <title>Technology - Computer Software: Programming Data Processing</title>
+    <url>http://www.nasdaq.com/symbol/goog</url>
+  </element>
+  <element>
+    <term>goods</term>
+    <term>corporation</term>
+    <term>big</term>
+    <term>5</term>
+    <term>sporting</term>
+    <term>bgfv</term>
+    <id>303</id>
+    <name>Big 5 Sporting Goods Corporation (BGFV)</name>
+    <score>212.701</score>
+    <timestamp>1331833525461</timestamp>
+    <title>Consumer Services - Other Specialty Stores</title>
+    <url>http://www.nasdaq.com/symbol/bgfv</url>
+  </element>
+  <element>
+    <term>gladstone</term>
+    <term>commercial</term>
+    <term>corporation</term>
+    <term>good</term>
+    <id>1034</id>
+    <name>Gladstone Commercial Corporation (GOOD)</name>
+    <score>194.274</score>
+    <timestamp>1331833525492</timestamp>
+    <title>Consumer Services - Real Estate</title>
+    <url>http://www.nasdaq.com/symbol/good</url>
+  </element>
+  <element>
+    <term>gladstone</term>
+    <term>commercial</term>
+    <term>corporation</term>
+    <term>goodo</term>
+    <id>1035</id>
+    <name>Gladstone Commercial Corporation (GOODO)</name>
+    <score>28.06</score>
+    <timestamp>1331833525492</timestamp>
+    <title>Consumer Services - Real Estate</title>
+    <url>http://www.nasdaq.com/symbol/goodo</url>
+  </element>
+  <element>
+    <term>gladstone</term>
+    <term>commercial</term>
+    <term>corporation</term>
+    <term>goodp</term>
+    <id>1036</id>
+    <name>Gladstone Commercial Corporation (GOODP)</name>
+    <score>24.5</score>
+    <timestamp>1331833525492</timestamp>
+    <title>Consumer Services - Real Estate</title>
+    <url>http://www.nasdaq.com/symbol/goodp</url>
+  </element>
+  <element>
+    <term>inc.</term>
+    <term>real</term>
+    <term>goods</term>
+    <term>solar</term>
+    <term>rsol</term>
+    <id>2052</id>
+    <name>Real Goods Solar Inc. (RSOL)</name>
+    <score>22.5954</score>
+    <timestamp>1331833525534</timestamp>
+    <title>Capital Goods - Building Products</title>
+    <url>http://www.nasdaq.com/symbol/rsol</url>
+  </element>
+  <element>
+    <term>inc.</term>
+    <term>good</term>
+    <term>times</term>
+    <term>restaurants</term>
+    <term>gtim</term>
+    <id>1062</id>
+    <name>Good Times Restaurants Inc. (GTIM)</name>
+    <score>3.43476</score>
+    <timestamp>1331833525493</timestamp>
+    <title>Consumer Services - Restaurants</title>
+    <url>http://www.nasdaq.com/symbol/gtim</url>
+  </element>
+</element-list>

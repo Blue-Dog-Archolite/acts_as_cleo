@@ -4,8 +4,8 @@ require File.expand_path('../lib/acts_as_cleo/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Robert R. Meyer"]
   gem.email         = ["Blue.Dog.Archolite@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{A Cleo Inegration Gem}
+  gem.summary       = %q{A Rails interface for the Cleo REST API}
   gem.homepage      = ""
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
@@ -14,4 +14,8 @@ Gem::Specification.new do |gem|
   gem.name          = "acts_as_cleo"
   gem.require_paths = ["lib"]
   gem.version       = ActsAsCleo::VERSION
+
+  gem.add_development_dependency 'bundler'
+  gem.add_dependency 'rails'
+  gem.add_dependency 'happymapper'
 end
