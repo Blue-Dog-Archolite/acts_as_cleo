@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "acts_as_cleo"
   gem.homepage = "http://github.com/blue-dog-archolite/acts_as_cleo"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{A Rails enabled Cleo API}
+  gem.description = %Q{LinkedIn Open Source type ahead tool's REST API as a ruby gem}
   gem.email = "Blue.Dog.Archolite@gmail.com"
   gem.authors = ["Robert R. Meyer"]
   # dependencies defined in Gemfile
@@ -32,13 +32,13 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-require 'rcov/rcovtask'
-Rcov::RcovTask.new do |test|
-  test.libs << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-  test.rcov_opts << '--exclude "gems/*"'
-end
+#require 'rcov/rcovtask'
+#Rcov::RcovTask.new do |test|
+#  test.libs << 'test'
+#  test.pattern = 'test/**/test_*.rb'
+#  test.verbose = true
+#  test.rcov_opts << '--exclude "gems/*"'
+#end
 
 task :default => :test
 
