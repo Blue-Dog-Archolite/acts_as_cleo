@@ -10,23 +10,24 @@ module ActsAsCleo
       #after_update send the data to cleo
     end
 
-    def set_cleo_id
-      #this needs to be rerolled to pull an Cleo::Reference record and persist it.
-    end
-
     def remove_from_cleo
       Cleo.delete(self) if self.persisted?
     end
     #end callback hooks
 
     def cleo_id
+      return nil if self.id.nil?
       record_type = self.cleo_config[:type]
-#      cr = Cleo::Reference.find_by_reference_and_id(record_type, self.id)
-#      return cr.nil? ? nil : cr.id
+      cr = Cleo::Reference.find(:first, :conditions => ["record_type = ? and record_id = ?", record_type, self.id])
+
+      return nil if cr.nil?
+      return cr.id
     end
 
-    def cleo_id=( new_id)
+    def set_cleo_id
       #this needs to be rerolled to pull an Cleo::Reference record and persist it.
+      cr = Cleo::Reference.find(:one, :conditions => ["record_type = ? and record_id = ?", record_type, self.id])
+      cr = Cleo::Reference.create(:record_type => record_type, :record_id => self.id) if cr.nil?
     end#
 
     def to_cleo_result

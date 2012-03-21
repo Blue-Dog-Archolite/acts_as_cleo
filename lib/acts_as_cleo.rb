@@ -5,7 +5,6 @@ require File.dirname(__FILE__) + '/cleo'
 require File.dirname(__FILE__) + '/acts_methods'
 require File.dirname(__FILE__) + '/class_methods'
 require File.dirname(__FILE__) + '/instance_methods'
-require File.dirname(__FILE__) + '/common_methods'
 
 module ActsAsCleo
   include ActsMethods

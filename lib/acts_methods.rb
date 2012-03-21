@@ -1,14 +1,13 @@
 module ActsAsCleo
   module ActsMethods
     def acts_as_cleo(opts = {})
+      #Common class methods added
       extend ClassMethods
-      extend CommonMethods
 
       #Instance Methods Correctly Included
       include InstanceMethods
 
-      before_create :set_cleo_id
-      after_commit :sync_with_cleo
+      after_commit  :set_cleo_id, :sync_with_cleo
       after_destroy :remove_from_cleo
 
       cattr_accessor :cleo_config

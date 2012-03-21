@@ -43,9 +43,7 @@ module Cleo
     return good_response_code?(response)
   end
 
-  def self.delete(obj)
-    obj = obj.to_cleo_result unless obj.is_a?(Cleo::Result)
-
+  def self.delete(cleo_id)
 =begin
 
 
@@ -189,7 +187,7 @@ module Cleo
 
 =end
 
-    result = `curl -v -X DELETE #{Cleo::Server.url}#{obj.id}`
+    result = `curl -v -X DELETE #{Cleo::Server.url}#{cleo_id}`
 
     #TODO I HATE THIS. Make this use Rails and not a fracking curl call
 #    uri = URI.parse Cleo::Server.url + "/#{obj.id}"
@@ -236,3 +234,4 @@ end
 #require Result Class
 require 'cleo/server'
 require 'cleo/result'
+require 'cleo/reference'
