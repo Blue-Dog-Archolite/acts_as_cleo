@@ -12,7 +12,7 @@ class TestCleo < Test::Unit::TestCase
     assert_not_equal nil, net
   end
 
-  should "create Testing Object" do
+  should "create then destroy Testing Object " do
     code = Cleo.create(@wedge)
     assert code
 
@@ -40,12 +40,21 @@ class TestCleo < Test::Unit::TestCase
     assert_equal r.id, i.id
   end
 
-#  should "destroy Testing Object" do
-#    code = Cleo.delete(@wedge)
-#    assert code
-#  end
+  should "create, update, then destroy, Testing Object" do
+    code = Cleo.create(@wedge)
+    assert code
 
-  should "update and then reset stored cleo object" do
+    wa = Cleo.find(@wedge.id)
+    assert_not_nil wa
+    assert_equal @wedge.id, wa.id
+
+    wa.name = "Luke Skywalker"
+    assert Cleo.update(wa)
+
+    wa_update = Cleo.find(@wedge.id)
+    assert_equal "Luke Skywalker", wa_update.name
+
+    assert Cleo.delete(wa)
   end
 end
 

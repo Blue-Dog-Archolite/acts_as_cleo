@@ -34,10 +34,10 @@ module Cleo
     obj = obj.to_cleo_result unless obj.is_a?(Cleo::Result)
 
     uri = URI.parse Cleo::Server.url + "#{obj.id}"
-    request = Net::HTTP::Post.new(uri.path)
+    request = Net::HTTP::Put.new(uri.path)
 
-    request.body = obj.to_xml
     request.content_type = 'application/xml'
+    request.body = obj.to_xml
     response = Net::HTTP.new(uri.host, uri.port).start { |http| http.request request }
 
     return good_response_code?(response)
