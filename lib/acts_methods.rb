@@ -15,6 +15,8 @@ module ActsAsCleo
       #defaults to class name
       #ie "User" when acts_as_cleo is included in user.b
       self.cleo_config = {}
+      opts[:except] ||= []
+      opts[:except] += %w{id created_at updated_at}
       self.cleo_config[:type] = opts[:type] || self.ancestors.first.name
 
       self.cleo_config[:name] = opts[:name]
@@ -22,7 +24,7 @@ module ActsAsCleo
       #specify what columns to add as part of the xml object
       #defaults to all columns in database
       self.cleo_config[:terms] = opts[:terms] || self.column_names
-      self.cleo_config[:terms] = self.cleo_config[:terms] - opts[:except] unless opts[:except].blank?
+      self.cleo_config[:terms] = self.cleo_config[:terms] - opts[:except]
 
       #figure out what the score param is. execute the self.send(#{opts[:score].to_s}.count)
       self.cleo_config[:score] = opts[:score]

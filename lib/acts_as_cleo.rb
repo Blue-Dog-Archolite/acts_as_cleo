@@ -1,17 +1,14 @@
-#load Cleo Module for result
+#load Cleo Module for result and server
 require File.dirname(__FILE__) + '/cleo'
 
+#Load ActsAsCleo method load
 require File.dirname(__FILE__) + '/acts_methods'
 require File.dirname(__FILE__) + '/class_methods'
 require File.dirname(__FILE__) + '/instance_methods'
 require File.dirname(__FILE__) + '/common_methods'
 
 module ActsAsCleo
-
-  extend ClassMethods
-  include InstanceMethods
-  include CommonMethods
-
+  include ActsMethods
 end
 
 ActiveRecord::Base.extend ActsAsCleo
