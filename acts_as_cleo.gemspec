@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "acts_as_cleo"
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robert R. Meyer"]
@@ -65,6 +65,9 @@ Gem::Specification.new do |s|
     "test/test_install_generator.rb",
     "test/unit/test_acts_methods.rb",
     "test/unit/test_cleo.rb",
+    "test/unit/test_common_methods.rb",
+    "test/unit/test_instance_methods.rb",
+    "test/unit/test_model_to_cleo.rb",
     "test/unit/test_result_parser.rb"
   ]
   s.homepage = "http://github.com/blue-dog-archolite/acts_as_cleo"
