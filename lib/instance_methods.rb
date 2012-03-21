@@ -19,6 +19,16 @@ module ActsAsCleo
     end
     #end callback hooks
 
+    def cleo_id
+      record_type = self.cleo_config[:type]
+#      cr = Cleo::Reference.find_by_reference_and_id(record_type, self.id)
+#      return cr.nil? ? nil : cr.id
+    end
+
+    def cleo_id=( new_id)
+      #this needs to be rerolled to pull an Cleo::Reference record and persist it.
+    end#
+
     def to_cleo_result
       #take self and change it into a Cleo::Result and return
       cr = Cleo::Result.new
