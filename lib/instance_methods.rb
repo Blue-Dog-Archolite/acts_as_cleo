@@ -45,7 +45,14 @@ module ActsAsCleo
       cr.name = cr.term.first if cr.name.blank?
 
       score = self.send(self.cleo_config[:score])
-      cr.score = score.nil? ? 0 : score.count
+
+      if score.nil?
+        cr.score = 0
+      elsif score.respond_to?("count")
+        cr.score = score.count
+      else
+        cr.score = score
+      end
 
       cr
     end

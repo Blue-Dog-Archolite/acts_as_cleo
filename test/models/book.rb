@@ -10,6 +10,6 @@ class Book < ActiveRecord::Base
   acts_as_cleo :terms => %w{name author}, :score => "cleo_score", :name => "name"
 
   def cleo_score
-    Random.rand(10...47)
+    1000
   end
 end
