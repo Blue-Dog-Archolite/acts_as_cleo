@@ -85,7 +85,6 @@ module Cleo
     when Net::HTTPOK
       true   # success response
     when Net::HTTPClientError, Net::HTTPInternalServerError
-      raise response.inspect
       false  # non-success response
     end
   end
