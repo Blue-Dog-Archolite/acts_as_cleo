@@ -1,5 +1,12 @@
 = acts_as_cleo
 
+
+= WARNING
+
+This gem is still in beta. The main Cleo functionality works but the hooks into active record objects are not done yet.
+
+Feel free to use this gem and provide feedback / patch requests.
+
 Acts As Cleo is a Rails gem that allows for easy integration with Linked In's Open Source type ahead manager. 
 
 Verify that you have downloaded and installed cleo locally.
@@ -15,7 +22,7 @@ Verify that you have downloaded and installed cleo locally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
 == To test
-* rake start:cleo
+* verify that cleo is running locally. 
 * rake
 
 == Copyright
