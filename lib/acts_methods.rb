@@ -19,7 +19,7 @@ module ActsAsCleo
       opts[:except] += %w{id created_at updated_at}
       self.cleo_config[:type] = opts[:type] || self.ancestors.first.name
 
-      self.cleo_config[:name] = opts[:name]
+      self.cleo_config[:name] = opts[:name].blank? ? "name" : opts[:name]
 
       #specify what columns to add as part of the xml object
       #defaults to all columns in database
@@ -27,6 +27,7 @@ module ActsAsCleo
       self.cleo_config[:terms] = self.cleo_config[:terms] - opts[:except]
 
       #figure out what the score param is. execute the self.send(#{opts[:score].to_s}.count)
+      opts[:score] ||= "id"
       self.cleo_config[:score] = opts[:score]
     end
   end

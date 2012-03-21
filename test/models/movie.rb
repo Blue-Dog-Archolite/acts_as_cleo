@@ -4,5 +4,5 @@
 # - description
 
 class Movie < ActiveRecord::Base
-  acts_as_cleo :score => "id", :name => "name"
+  acts_as_cleo
 end

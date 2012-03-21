@@ -14,5 +14,6 @@ class TestActsAsMethods < Test::Unit::TestCase
     movie = Movie.create(:name => "A New Hope", :description => "The Best")
     assert_equal %w{name description}, movie.cleo_config[:terms]
     assert_equal "id", movie.cleo_config[:score]
+    assert_equal "name", movie.cleo_config[:name]
   end
 end
