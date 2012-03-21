@@ -23,4 +23,6 @@ test/tmp
 test/version_tmp
 tmp
 
+#db
+test/db/*
 debug.log
