@@ -23,19 +23,26 @@ Cleo.query(string)          # Takes string search param and returns array of Cle
 
 
 To enable on an ActiveRecord::Base model:
+
 <code>
 acts_as_cleo
 
 acts_as_cleo :terms => %w{terms to be stored}
+
 acts_as_cleo :except => %w{columns to be ignored}
+
 acts_as_cleo :score=> "method or column to be used"
 
 acts_as_cleo :terms => %w{name value other}, :score => "my_score_method"
 
 </code>
+
 Default functionality takes all column_names and uses them as terms for Cleo search.
+
 To specify terms to be stored in Cleo, pass :terms => [] with the column and/or method names to be stored
+
 acts_as_cleo ignores updated_at, created_at, id by default.
+
 You can specify more columns to ignore by passing :except => [] with column names.
 
 By default, acts_as_cleo uses the column "name" from your model as the Cleo search name. To specify the name in Cleo, pass :name => "my_attribute_name"
@@ -43,6 +50,7 @@ By default, acts_as_cleo uses the column "name" from your model as the Cleo sear
 To specify a Cleo score, pass :score => "name of column or function"
 
 ActiveRecord::Base objects with acts_as_cleo get three callback functions:
+
 set_cleo_id, sync_with_cleo and remove_from_cleo
 
 = WARNING
