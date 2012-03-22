@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "acts_as_cleo"
-  s.version = "1.0.0"
+  s.version = "1.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robert R. Meyer"]
@@ -23,13 +23,16 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "acts_as_cleo.gemspec",
-    "config/cleo.yml",
+    "config/cleo_example.yml",
     "lib/acts_as_cleo.rb",
     "lib/acts_as_cleo/result.rb",
     "lib/acts_as_cleo/version.rb",
     "lib/acts_methods.rb",
     "lib/class_methods.rb",
     "lib/cleo.rb",
+    "lib/cleo/jobs/create.rb",
+    "lib/cleo/jobs/delete.rb",
+    "lib/cleo/jobs/update.rb",
     "lib/cleo/reference.rb",
     "lib/cleo/result.rb",
     "lib/cleo/server.rb",
@@ -81,6 +84,7 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<happymapper>, [">= 0"])
       s.add_runtime_dependency(%q<rails>, [">= 3.1.0"])
+      s.add_runtime_dependency(%q<resque>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_development_dependency(%q<bundler>, [">= 1.0.0"])
@@ -92,6 +96,7 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<happymapper>, [">= 0"])
       s.add_dependency(%q<rails>, [">= 3.1.0"])
+      s.add_dependency(%q<resque>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_dependency(%q<bundler>, [">= 1.0.0"])
@@ -104,6 +109,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<happymapper>, [">= 0"])
     s.add_dependency(%q<rails>, [">= 3.1.0"])
+    s.add_dependency(%q<resque>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
     s.add_dependency(%q<bundler>, [">= 1.0.0"])
