@@ -4,38 +4,41 @@
 
 Create a cleo.yml in your config directory.
 
-<code>
-development:
-  url: "http://localhost:8080/cleo-primer/"
+  development:
 
-production:
-  url: "http://localhost:8080/cleo-primer/"
-</code>
+    url: "http://localhost:8080/cleo-primer/"
+
+  production:
+
+    url: "http://localhost:8080/cleo-primer/"
+
 
 === Usage
-<code>
-Cleo.find(int)              # Find Cleo entry by Cleo native id
-Cleo.update(Cleo::Result)   # Pass any acts_as_cleo object to this method to have it update the Cleo entry
-Cleo.delete(int)            # Delete by Cleo id, also accepts any acts_as_cleo object or Cleo::Result
-Cleo.create(obj)            # Creates new entry on Cleo index. Accepts any acts_as_cleo object or Cleo::Result
-Cleo.query(string)          # Takes string search param and returns array of Cleo::Reference objects
-</code>
+
+
+  Cleo.find(int)              # Find Cleo entry by Cleo native id
+
+  Cleo.update(Cleo::Result)   # Pass any acts_as_cleo object to this method to have it update the Cleo entry
+
+  Cleo.delete(int)            # Delete by Cleo id, also accepts any acts_as_cleo object or Cleo::Result
+
+  Cleo.create(obj)            # Creates new entry on Cleo index. Accepts any acts_as_cleo object or Cleo::Result
+
+  Cleo.query(string)          # Takes string search param and returns array of Cleo::Reference objects
+
 
 
 To enable on an ActiveRecord::Base model:
 
-<code>
-acts_as_cleo
+  acts_as_cleo
 
-acts_as_cleo :terms => %w{terms to be stored}
+  acts_as_cleo :terms => %w{terms to be stored}
 
-acts_as_cleo :except => %w{columns to be ignored}
+  acts_as_cleo :except => %w{columns to be ignored}
 
-acts_as_cleo :score=> "method or column to be used"
+  acts_as_cleo :score=> "method or column to be used"
 
-acts_as_cleo :terms => %w{name value other}, :score => "my_score_method"
-
-</code>
+  acts_as_cleo :terms => %w{name value other}, :score => "my_score_method"
 
 Default functionality takes all column_names and uses them as terms for Cleo search.
 
