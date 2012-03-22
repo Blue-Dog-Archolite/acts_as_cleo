@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "acts_as_cleo"
-  s.version = "0.0.4"
+  s.version = "1.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robert R. Meyer"]
@@ -60,11 +60,11 @@ Gem::Specification.new do |s|
     "test/models/category.rb",
     "test/models/electronic.rb",
     "test/models/movie.rb",
-    "test/test_acts_as_cleo.rb",
     "test/test_install_generator.rb",
+    "test/unit/test_active_record_callback_hooks.rb",
     "test/unit/test_acts_methods.rb",
+    "test/unit/test_class_methods.rb",
     "test/unit/test_cleo.rb",
-    "test/unit/test_common_methods.rb",
     "test/unit/test_instance_methods.rb",
     "test/unit/test_model_to_cleo.rb",
     "test/unit/test_result_parser.rb"
