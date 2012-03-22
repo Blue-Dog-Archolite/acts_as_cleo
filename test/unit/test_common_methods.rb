@@ -11,9 +11,6 @@ class TestCommonMethods < Test::Unit::TestCase
     book_cleo_id = book.cleo_id
     assert Cleo.find(book_cleo_id)
 
-    require 'ruby-debug'
-    debugger
-
     assert Cleo.delete(book_cleo_id)
     assert_nil Cleo.find(book_cleo_id)
   end
