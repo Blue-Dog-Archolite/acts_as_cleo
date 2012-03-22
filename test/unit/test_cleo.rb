@@ -56,5 +56,15 @@ class TestCleo < Test::Unit::TestCase
 
     assert Cleo.delete(wa.id)
   end
+
+  should "change the configuration of the server" do
+    root_path = Rails.root.nil? ? "#{File.dirname(File.expand_path(__FILE__))}/../"  : Rails.root
+    cleo_file_path = File.join( root_path, 'config', 'cleo.yml' )
+
+    Cleo::Server.configure YAML::load_file( cleo_file_path )['async_test'].symbolize_keys
+    assert Cleo::Server.async?
+    assert "cleo", Cleo::Server.queue
+
+  end
 end
 

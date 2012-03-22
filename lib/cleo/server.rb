@@ -1,16 +1,31 @@
 module Cleo
   class Server
-    @@server_location = {:url => 'http://cleo.testingserver.com/cleo-primer/' }
+    @@configuration= {:url => 'http://cleo.testingserver.com/cleo-primer/', :run_async => false, :queue => "cleo"}
 
-    def self.server_locations=(new_locations)
-      parts = new_locations[:url].split("/")
+    def self.configure(new_config)
+      parts = new_config[:url].split("/")
       parts -=  %w{rest elements}
       parts +=  %w{rest elements}
-      @@server_location[:url] = parts.join('/') + '/'
+      @@configuration[:url] = parts.join('/') + '/'
+
+      @@configuration[:run_async] = new_config.has_key?(:run_async) ? new_config[:run_async] : false
+      @@configuration[:queue] = new_config.has_key?(:queue) ? new_config[:queue] : "cleo"
+
+      env = ENV['QUEUE'] || ''
+      ENV['QUEUE'] = (env.split(',') << @@configuration[:queue]).uniq.join(',')
     end
 
+    #meta these out
     def self.url
-      @@server_location[:url]
+      @@configuration[:url]
+    end
+
+    def self.async?
+      @@configuration[:run_async]
+    end
+
+    def self.queue
+      @@configuration[:queue].to_sym
     end
   end
 end

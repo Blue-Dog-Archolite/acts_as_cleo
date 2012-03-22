@@ -3,17 +3,29 @@ module ActsAsCleo
     # callback hooks to keep cleo insync with data
     def create_cleo
       set_cleo_id
-      Cleo.create(self)
+      if Cleo::Server.async?
+        Resque.enqueue(Cleo::Resque::Create, self.record_type.classify, self.id)
+      else
+        Cleo.create(self)
+      end
     end
 
     def update_cleo
+      if Cleo::Server.async?
+        Resque.enqueue(Cleo::Resque::Update, self.record_type.classify, self.id)
+      else
         Cleo.update(self)
+      end
     end
 
     def remove_from_cleo
-      Cleo.delete(self.cleo_id)
-      cr = cleo_reference
-      cr.delete
+      if Cleo::Server.async?
+        Resque.enqueue(Cleo::Resque::Delete, self.record_type.classify, self.id)
+      else
+        Cleo.delete(self.cleo_id)
+        cr = cleo_reference
+        cr.delete
+      end
     end
 
     def set_cleo_id
@@ -29,8 +41,6 @@ module ActsAsCleo
       return nil if cr.nil?
       return cr.id
     end
-
-
 
     def to_cleo_result
       #take self and change it into a Cleo::Result and return
