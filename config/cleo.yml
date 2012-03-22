@@ -1,8 +1,5 @@
-# Config file for the acts_as_solr plugin.
+# Config file for the acts_as_cleo plugin.
 #
-# If you change the host or port number here, make sure you update
-# them in your Solr config file
-
 development:
   url: "http://localhost:8080/cleo-primer/"
 
