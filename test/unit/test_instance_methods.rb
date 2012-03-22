@@ -5,7 +5,7 @@ class TestInstanceMethods < Test::Unit::TestCase
     @b = Book.new
   end
 
-  %w{cleo_id cleo_id= sync_with_cleo set_cleo_id remove_from_cleo to_cleo_result as_cleo}.each do |resp|
+  %w{cleo_id update_cleo remove_from_cleo create_cleo set_cleo_id to_cleo_result as_cleo}.each do |resp|
     should "respond to #{resp}" do
       assert @b.respond_to?(resp), "ActiveRecord Model with acts_as_cleo should respond to #{resp}"
     end

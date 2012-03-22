@@ -63,7 +63,7 @@ class TestCleo < Test::Unit::TestCase
 
     Cleo::Server.configure YAML::load_file( cleo_file_path )['async_test'].symbolize_keys
     assert Cleo::Server.async?
-    assert "cleo", Cleo::Server.queue
+    assert "cleo", Cleo::Server.queue.to_s
 
   end
 end
