@@ -19,6 +19,8 @@ module Cleo
     uri = URI.parse(Cleo::Server.url + "#{id}")
     response = self.get(uri)
 
+    return nil if response.body.blank?
+
     Cleo::Result.parse(response.body, :single => true)
   end
 
@@ -43,7 +45,7 @@ module Cleo
     return good_response_code?(response)
   end
 
-  def self.delete(cleo_id)
+  def self.delete(obj_or_id)
 =begin
 
 
@@ -186,6 +188,15 @@ module Cleo
                                                         ,#@@@#@@@#+;,`
 
 =end
+
+    cleo_id = nil
+    if obj_or_id.is_a?(Cleo::Result)
+      cleo_id = obj_or_id.id
+    elsif obj_or_id.is_a?(Fixnum)
+      cleo_id = obj_or_id
+    elsif obj_or_id.responds_to?("cleo_id")
+      cleo_id = obj_or_id.cleo_id
+    end
 
     result = `curl -v -X DELETE #{Cleo::Server.url}#{cleo_id}`
 

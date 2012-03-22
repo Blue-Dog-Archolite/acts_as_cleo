@@ -1,6 +1,6 @@
 require 'helper'
 
-class TestCommonMethods < Test::Unit::TestCase
+class TestClassMethods < Test::Unit::TestCase
   should "respond to query call" do
     assert Book.respond_to?("query")
   end
@@ -12,7 +12,11 @@ class TestCommonMethods < Test::Unit::TestCase
     assert Cleo.find(book_cleo_id)
 
     assert Cleo.delete(book_cleo_id)
-    assert_nil Cleo.find(book_cleo_id)
+  end
+
+  should "be able to query from Klass" do
+    books = Book.query("goog")
+    assert_not_nil books
+    assert_kind_of Array, books
   end
 end
-

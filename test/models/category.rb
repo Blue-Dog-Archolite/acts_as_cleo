@@ -4,4 +4,5 @@
 
 class Category < ActiveRecord::Base
   has_many :books
+  acts_as_cleo
 end

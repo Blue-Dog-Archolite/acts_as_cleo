@@ -7,5 +7,5 @@
 # - price
 
 class Electronic < ActiveRecord::Base
-
+  acts_as_cleo
 end

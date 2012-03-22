@@ -1,34 +1,36 @@
 module ActsAsCleo
   module InstanceMethods
     # callback hooks to keep cleo insync with data
-    def sync_with_cleo
-      if self.persisted?
+    def create_cleo
+      set_cleo_id
+      Cleo.create(self)
+    end
+
+    def update_cleo
         Cleo.update(self)
-      else
-        Cleo.create(self)
-      end
-      #after_update send the data to cleo
     end
 
     def remove_from_cleo
-      Cleo.delete(self) if self.persisted?
+      Cleo.delete(self.cleo_id)
+      cr = cleo_reference
+      cr.delete
     end
+
+    def set_cleo_id
+      cr = Cleo::Reference.find(:first, :conditions => ["record_type = ? and record_id = ?", record_type, self.id])
+      cr = Cleo::Reference.create(:record_type => record_type, :record_id => self.id) if cr.nil?
+    end#
     #end callback hooks
 
     def cleo_id
       return nil if self.id.nil?
-      record_type = self.cleo_config[:type]
-      cr = Cleo::Reference.find(:first, :conditions => ["record_type = ? and record_id = ?", record_type, self.id])
+      cr = cleo_reference
 
       return nil if cr.nil?
       return cr.id
     end
 
-    def set_cleo_id
-      #this needs to be rerolled to pull an Cleo::Reference record and persist it.
-      cr = Cleo::Reference.find(:one, :conditions => ["record_type = ? and record_id = ?", record_type, self.id])
-      cr = Cleo::Reference.create(:record_type => record_type, :record_id => self.id) if cr.nil?
-    end#
+
 
     def to_cleo_result
       #take self and change it into a Cleo::Result and return
@@ -59,5 +61,14 @@ module ActsAsCleo
     end
 
     alias :as_cleo :to_cleo_result
+
+    private
+    def record_type
+      self.cleo_config[:type]
+    end
+
+    def cleo_reference
+      Cleo::Reference.find(:first, :conditions => ["record_type = ? and record_id = ?", record_type, self.id])
+    end
   end
 end

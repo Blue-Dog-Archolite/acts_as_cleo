@@ -7,8 +7,9 @@ module ActsAsCleo
       #Instance Methods Correctly Included
       include InstanceMethods
 
-      after_commit  :set_cleo_id, :sync_with_cleo
-      after_destroy :remove_from_cleo
+      after_create :create_cleo
+      after_update :update_cleo
+      before_destroy :remove_from_cleo
 
       cattr_accessor :cleo_config
 
