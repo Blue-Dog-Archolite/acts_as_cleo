@@ -1,16 +1,5 @@
 = acts_as_cleo
 
-=== To enable
-
-Create a cleo.yml in your config directory.
-
-  development:
-    url: "http://localhost:8080/cleo-primer/"
-
-  production:
-    url: "http://localhost:8080/cleo-primer/"
-
-
 Acts As Cleo now has support for Redis backed asynchronous operations.
 
 To enable this, change your cleo.yml to include
@@ -34,14 +23,14 @@ queue defaults to "cleo"
 
 To enable on an ActiveRecord::Base model:
 
-  acts_as_cleo
+  class MyObject < ActiveRecord::Base
+    acts_as_cleo
+  end
 
+Or add optional parameters
   acts_as_cleo :terms => %w{terms to be stored}
-
   acts_as_cleo :except => %w{columns to be ignored}
-
   acts_as_cleo :score=> "method or column to be used"
-
   acts_as_cleo :terms => %w{name value other}, :score => "my_score_method"
 
 Default functionality takes all column_names and uses them as terms for Cleo search.
