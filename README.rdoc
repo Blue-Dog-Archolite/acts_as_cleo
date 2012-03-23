@@ -5,28 +5,32 @@
 Create a cleo.yml in your config directory.
 
   development:
-
     url: "http://localhost:8080/cleo-primer/"
 
   production:
-
     url: "http://localhost:8080/cleo-primer/"
 
+
+Acts As Cleo now has support for Redis backed asynchronous operations.
+
+To enable this, change your cleo.yml to include
+ async: true
+
+async defaults to false
+
+Optional parameters are:
+  queue: "my_queue_to_process"
+
+queue defaults to "cleo"
 
 === Usage
 
 
   Cleo.find(int)              # Find Cleo entry by Cleo native id
-
   Cleo.update(Cleo::Result)   # Pass any acts_as_cleo object to this method to have it update the Cleo entry
-
   Cleo.delete(int)            # Delete by Cleo id, also accepts any acts_as_cleo object or Cleo::Result
-
   Cleo.create(obj)            # Creates new entry on Cleo index. Accepts any acts_as_cleo object or Cleo::Result
-
   Cleo.query(string)          # Takes string search param and returns array of Cleo::Reference objects
-
-
 
 To enable on an ActiveRecord::Base model:
 
@@ -54,16 +58,12 @@ To specify a Cleo score, pass :score => "name of column or function"
 
 ActiveRecord::Base objects with acts_as_cleo get three callback functions:
 
-set_cleo_id, sync_with_cleo and remove_from_cleo
+  set_cleo_id, create_cleo, update_cleo, and remove_from_cleo
+
+All three of these callbacks respect the async option on cleo.yml configuration.
 
 = WARNING
-
-This gem is still in beta. 
-
-* Cleo.find
-* Cleo.update
-* Cleo.delete
-* Cleo.create
+This gem is still in beta.
 
 = Installing
 
@@ -72,6 +72,21 @@ Add acts_as_cleo to your Gemfile
 
 After running bundle install execute the generate script to install acts_as_cleo
   rails g acts_as_cleo:install
+
+This generate command will install the following files:
+
+=== Background Job Processors
+* app/jobs/create.rb
+* app/jobs/update.rb
+* app/jobs/delete.rb
+
+=== Configuration and Initialization files
+* config/cleo.yml
+* config/initalizers/cleo_initalizer.rb
+
+=== Database migration
+* db/migrate/#{timestamp or sequence number}_install_acts_as_audited.rb
+
 
 Verify server settings in config/cleo.yml
 
