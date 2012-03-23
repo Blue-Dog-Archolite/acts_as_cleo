@@ -13,11 +13,6 @@ module Cleo
 
       env = ENV['QUEUE'] || ''
       ENV['QUEUE'] = (env.split(',') << @@configuration[:queue]).uniq.join(',')
-
-      if @@configuration[:run_async]
-        require 'resque'
-        %w{create update delete}.each{|life| require File.dirname(__FILE__) + "/jobs/#{life}" }
-      end
     end
 
     def self.load_configuration

@@ -58,13 +58,17 @@ class TestCleo < Test::Unit::TestCase
   end
 
   should "change the configuration of the server" do
-    root_path = Rails.root.nil? ? "#{File.dirname(File.expand_path(__FILE__))}/../"  : Rails.root
-    cleo_file_path = File.join( root_path, 'config', 'cleo.yml' )
+    server_config = {:url => "http://localhost:8080/cleo-primer/", :run_async => true, :queue => "cleo"}
 
-    Cleo::Server.configure YAML::load_file( cleo_file_path )['async_test'].symbolize_keys
+    Cleo::Server.configure server_config
     assert Cleo::Server.async?
     assert "cleo", Cleo::Server.queue.to_s
 
+
+    server_config = {:url => "http://localhost:8080/cleo-primer/", :run_async => false}
+    Cleo::Server.configure server_config
+    assert_same false, Cleo::Server.async?
+    assert "cleo", Cleo::Server.queue.to_s
   end
 end
 

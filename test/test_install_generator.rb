@@ -1,10 +1,10 @@
 require 'helper'
-require 'generators/acts_as_cleo/install_generator'
+require 'generators/acts_as_cleo/install/install_generator'
 
 class InstallGeneratorTest < Rails::Generators::TestCase
   destination File.expand_path('../../tmp', __FILE__)
   setup :prepare_destination
-  tests ActsAsCleo::Generators::InstallGenerator
+  tests ActsAsCleo::InstallGenerator
 
   should "generate a migration" do
     run_generator %w(install)

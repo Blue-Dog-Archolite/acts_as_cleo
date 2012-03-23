@@ -4,7 +4,7 @@ module ActsAsCleo
     def create_cleo
       set_cleo_id
       if Cleo::Server.async?
-        Resque.enqueue(Cleo::Resque::Create, self.record_type.classify, self.id)
+        Resque.enqueue(Cleo::ResqueCreate, self.record_type.classify, self.id)
       else
         Cleo.create(self)
       end
@@ -12,7 +12,7 @@ module ActsAsCleo
 
     def update_cleo
       if Cleo::Server.async?
-        Resque.enqueue(Cleo::Resque::Update, self.record_type.classify, self.id)
+        Resque.enqueue(Cleo::ResqueUpdate, self.record_type.classify, self.id)
       else
         Cleo.update(self)
       end
@@ -20,7 +20,7 @@ module ActsAsCleo
 
     def remove_from_cleo
       if Cleo::Server.async?
-        Resque.enqueue(Cleo::Resque::Delete, self.record_type.classify, self.id)
+        Resque.enqueue(Cleo::ResqueDelete, self.record_type.classify, self.id)
       else
         Cleo.delete(self.cleo_id)
         cr = cleo_reference
