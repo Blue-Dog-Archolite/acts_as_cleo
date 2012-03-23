@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "acts_as_cleo"
-  s.version = "1.1.0"
+  s.version = "1.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robert R. Meyer"]
-  s.date = "2012-03-22"
+  s.date = "2012-03-23"
   s.description = "LinkedIn Open Source type ahead tool's REST API as a ruby gem"
   s.email = "Blue.Dog.Archolite@gmail.com"
   s.extra_rdoc_files = [
