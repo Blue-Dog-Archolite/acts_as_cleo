@@ -65,7 +65,18 @@ This gem is still in beta.
 * Cleo.delete
 * Cleo.create
 
-As of this moment you need to pass a constructed Cleo::Result object to the above methods for them to function correctly.
+= Installing
+
+Add acts_as_cleo to your Gemfile
+  gem 'acts_as_cleo'
+
+After running bundle install execute the generate script to install acts_as_cleo
+  rails g acts_as_cleo:install
+
+Verify server settings in config/cleo.yml
+
+Run migrations
+  rake db:migrate
 
 Feel free to use this gem and provide feedback / patch requests.
 

@@ -10,7 +10,16 @@ module ActsAsCleo
     source_root File.expand_path("../templates", __FILE__)
 
     def copy_migration_and_config
+
+      #Config file
       copy_file 'cleo.yml', "config/cleo.yml"
+
+      #Resque workers
+      %w{update create delete}.each do |life|
+        copy_file "jobs/#{life}.rb", "jobs/#{life}.rb"
+      end
+
+      #create migration
       migration_template 'install.rb', 'db/migrate/install_acts_as_audited.rb'
     end
 
