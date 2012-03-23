@@ -19,7 +19,7 @@ queue defaults to "cleo"
   Cleo.update(Cleo::Result)   # Pass any acts_as_cleo object to this method to have it update the Cleo entry
   Cleo.delete(int)            # Delete by Cleo id, also accepts any acts_as_cleo object or Cleo::Result
   Cleo.create(obj)            # Creates new entry on Cleo index. Accepts any acts_as_cleo object or Cleo::Result
-  Cleo.query(string)          # Takes string search param and returns array of Cleo::Reference objects
+  Cleo.query(string)          # Takes string search param and returns array of Cleo::Result objects
 
 To enable on an ActiveRecord::Base model:
 
