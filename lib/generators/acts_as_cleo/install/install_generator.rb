@@ -13,6 +13,7 @@ module ActsAsCleo
 
       #Config file
       copy_file 'cleo.yml', "config/cleo.yml"
+      copy_file 'cleo_initalizer.rb', 'app/initalizers/cleo_initalizer.rb'
 
       #Resque workers
       %w{update create delete}.each do |life|
