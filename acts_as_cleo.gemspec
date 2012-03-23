@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "acts_as_cleo"
-  s.version = "2.1.0"
+  s.version = "2.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robert R. Meyer"]
@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
     "lib/cleo/server.rb",
     "lib/generators/acts_as_cleo/install/install_generator.rb",
     "lib/generators/acts_as_cleo/install/templates/cleo.yml",
+    "lib/generators/acts_as_cleo/install/templates/cleo_initalizer.rb",
     "lib/generators/acts_as_cleo/install/templates/install.rb",
     "lib/generators/acts_as_cleo/install/templates/jobs/create.rb",
     "lib/generators/acts_as_cleo/install/templates/jobs/delete.rb",
