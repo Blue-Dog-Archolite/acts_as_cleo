@@ -19,7 +19,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/blue-dog-archolite/acts_as_cleo"
   gem.license = "MIT"
   gem.summary = %Q{A Rails enabled Cleo API}
-  gem.description = %Q{LinkedIn Open Source type ahead tool's REST API as a ruby gem}
+  gem.description = %Q{LinkedIn Open Source type ahead tool's REST API as a ruby gem. Now with Reddis support.}
   gem.email = "Blue.Dog.Archolite@gmail.com"
   gem.authors = ["Robert R. Meyer"]
   # dependencies defined in Gemfile
