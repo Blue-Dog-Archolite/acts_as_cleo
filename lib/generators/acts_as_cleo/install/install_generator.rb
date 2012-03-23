@@ -21,7 +21,7 @@ module ActsAsCleo
       end
 
       #create migration
-      migration_template 'install.rb', 'db/migrate/install_acts_as_audited.rb'
+      migration_template 'install.rb', 'db/migrate/install_acts_as_cleo.rb'
     end
 
     def self.next_migration_number(dirname)

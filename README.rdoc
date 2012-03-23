@@ -85,7 +85,7 @@ This generate command will install the following files:
 * config/initalizers/cleo_initalizer.rb
 
 === Database migration
-* db/migrate/#{timestamp or sequence number}_install_acts_as_audited.rb
+* db/migrate/#{timestamp or sequence number}_install_acts_as_cleo.rb
 
 
 Verify server settings in config/cleo.yml
