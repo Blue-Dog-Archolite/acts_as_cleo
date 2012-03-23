@@ -16,7 +16,7 @@ module ActsAsCleo
 
       #Resque workers
       %w{update create delete}.each do |life|
-        copy_file "jobs/#{life}.rb", "jobs/#{life}.rb"
+        copy_file "jobs/#{life}.rb", "app/jobs/#{life}.rb"
       end
 
       #create migration

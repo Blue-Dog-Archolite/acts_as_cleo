@@ -20,8 +20,6 @@ module Cleo
 
       if File.exists?( cleo_file_path )
         Cleo::Server.configure(YAML::load_file( cleo_file_path )[Rails.env].symbolize_keys)
-      else
-        raise LoadError.new("No cleo.yml found. Please run rails g acts_as_cleo:install")
       end
     end
 
