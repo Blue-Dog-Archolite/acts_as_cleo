@@ -8,6 +8,7 @@ require 'active_record'
 require 'net/http'
 
 #require acts_as_cleo
+
 require File.dirname(__FILE__) + '/../lib/acts_as_cleo'
 
 begin
