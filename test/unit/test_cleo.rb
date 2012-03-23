@@ -20,7 +20,7 @@ class TestCleo < Test::Unit::TestCase
     assert_not_nil wa
     assert_equal @wedge.id, wa.id
 
-    assert Cleo.delete(wa.id)
+    assert Cleo.delete(wa.id), "Didn't delete"
   end
 
   should "get google results from qery" do
@@ -54,7 +54,7 @@ class TestCleo < Test::Unit::TestCase
     wa_update = Cleo.find(@wedge.id)
     assert_equal "Luke Skywalker", wa_update.name
 
-    assert Cleo.delete(wa.id)
+    assert Cleo.delete(wa.id), "didn't delete"
   end
 
   should "change the configuration of the server" do

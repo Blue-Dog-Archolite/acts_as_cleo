@@ -11,7 +11,7 @@ class TestClassMethods < Test::Unit::TestCase
     book_cleo_id = book.cleo_id
     assert Cleo.find(book_cleo_id)
 
-    assert Cleo.delete(book_cleo_id)
+    assert Cleo.delete(book_cleo_id), "Didn't Delete"
   end
 
   should "be able to query from Klass" do
