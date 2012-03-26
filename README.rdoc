@@ -2,18 +2,24 @@
 
 Acts As Cleo now has support for Redis backed asynchronous operations.
 
-To enable this, change your cleo.yml to include
- async: true
 
-async defaults to false
 
 Optional parameters are:
   queue: "my_queue_to_process"
 
 queue defaults to "cleo"
 
-=== Usage
+To enable Redis, change your cleo.yml to include
+ async: true
 
+async defaults to false
+
+To disable auto flushing of indexer queue
+  auto_flush: false
+
+By default, auto indexer flushing is enabled
+
+=== Usage
 
   Cleo.find(int)              # Find Cleo entry by Cleo native id
   Cleo.update(Cleo::Result)   # Pass any acts_as_cleo object to this method to have it update the Cleo entry

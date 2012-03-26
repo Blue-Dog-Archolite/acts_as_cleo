@@ -78,9 +78,16 @@ module Cleo
   end
 
   private
+  def self.flush
+    uri = URI.parse Cleo::Server.url + "flush"
+    request = Net::HTTP::Post.new(uri.path)
+    Net::HTTP.new(uri.host, uri.port).start { |http| http.request request }
+  end
+
   def self.good_response_code?(response)
     case response
     when Net::HTTPOK
+      flush if Cleo::Server.auto_flush?
       true   # success response
     when Net::HTTPClientError, Net::HTTPInternalServerError
       false  # non-success response

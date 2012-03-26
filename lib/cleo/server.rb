@@ -8,7 +8,15 @@ module Cleo
       parts +=  %w{rest elements}
       @@configuration[:url] = parts.join('/') + '/'
 
-      @@configuration[:run_async] = new_config.has_key?(:run_async) ? new_config[:run_async] : false
+      if new_config.has_key?(:async)
+        @@configuration[:async] = new_config[:async]
+      elsif new_config.has_key?(:run_async)
+        @@configuration[:async] = new_config[:run_async]
+      else
+        @@configuration[:async] = false
+      end
+
+      @@configuration[:auto_flush] = new_config.has_key?(:auto_flush) ? new_config[:auto_flush] : true
       @@configuration[:queue] = new_config.has_key?(:queue) ? new_config[:queue] : "cleo"
 
       env = ENV['QUEUE'] || ''
@@ -28,8 +36,12 @@ module Cleo
       @@configuration[:url]
     end
 
+    def self.auto_flush?
+      @@configuration[:auto_flush]
+    end
+
     def self.async?
-      @@configuration[:run_async]
+      @@configuration[:async]
     end
 
     def self.queue
