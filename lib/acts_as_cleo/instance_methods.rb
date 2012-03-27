@@ -52,6 +52,8 @@ module ActsAsCleo
       end
 
       cr.term = cr.term.compact.reject(&:blank?)
+
+      set_cleo_id if self.cleo_id.nil?
       cr.id = self.cleo_id
 
       cr.name = self.send(self.cleo_config[:name]).to_s
