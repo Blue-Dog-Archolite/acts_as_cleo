@@ -48,7 +48,7 @@ module ActsAsCleo
       cr.term = []
 
       self.cleo_config[:terms].each do |term|
-        cr.term << self.send(term).to_s
+        cr.term << self.send(term).to_s.downcase
       end
 
       cr.term = cr.term.compact.reject(&:blank?)
@@ -56,7 +56,7 @@ module ActsAsCleo
       set_cleo_id if self.cleo_id.nil?
       cr.id = self.cleo_id
 
-      cr.name = self.send(self.cleo_config[:name]).to_s
+      cr.name = self.send(self.cleo_config[:name]).to_s.downcase
       cr.name = cr.term.first if cr.name.blank?
 
       score = self.send(self.cleo_config[:score])
