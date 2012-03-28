@@ -3,9 +3,11 @@ development:
   url: "http://localhost:8080/cleo-primer/"
   run_async: true
   queue: "cleo"
+  auto_enable_queue: true
 
 test:
   url: "http://localhost:8080/cleo-primer/"
+  auto_enable_queue: true
 
 production:
   url: "http://localhost:8080/cleo-primer/"

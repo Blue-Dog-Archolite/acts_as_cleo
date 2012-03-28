@@ -19,6 +19,12 @@ To disable auto flushing of indexer queue
 
 By default, auto indexer flushing is enabled
 
+To enable auto processing of the Redis queue append
+  auto_enable_queue: true
+
+to any environment you wish to have the queue auto added to your ENV['QUEUE']
+
+
 === Usage
 
   Cleo.find(int)              # Find Cleo entry by Cleo native id
