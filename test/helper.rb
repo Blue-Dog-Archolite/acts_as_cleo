@@ -22,6 +22,7 @@ end
 require 'test/unit'
 require 'shoulda'
 
+
 file_dirname = File.dirname(__FILE__)
 
 #Load Lib
@@ -32,6 +33,10 @@ $LOAD_PATH.unshift file_dirname
 sqlite = File.join(file_dirname, 'db', 'connection', 'sqlite')
 require sqlite
 
+#Load Database Cleaner
+require 'database_cleaner'
+DatabaseCleaner[:active_record].strategy = :truncation
+
 # Load Models
 models_dir = File.join(file_dirname, 'models')
 Dir[ models_dir + '/*.rb'].each { |m| require m }
@@ -40,4 +45,7 @@ server_config = {:url => "http://localhost:8080/cleo-primer/", :run_async => fal
 Cleo::Server.configure server_config
 
 class Test::Unit::TestCase
+  def setup
+    DatabaseCleaner.clean
+  end
 end

@@ -27,7 +27,7 @@ class TestActiveRecordCallbacHooks < Test::Unit::TestCase
     assert book.save!
 
     updated_cleo_record = Cleo.find(book.cleo_id)
-    assert_equal book.name, updated_cleo_record.name
+    assert_equal book.name.downcase, updated_cleo_record.name
     assert_not_equal cleo_record.name, updated_cleo_record.name
 
     assert book.destroy

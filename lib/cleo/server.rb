@@ -19,8 +19,10 @@ module Cleo
       @@configuration[:auto_flush] = new_config.has_key?(:auto_flush) ? new_config[:auto_flush] : true
       @@configuration[:queue] = new_config.has_key?(:queue) ? new_config[:queue] : "cleo"
 
-      env = ENV['QUEUE'] || ''
-      ENV['QUEUE'] = (env.split(',') << @@configuration[:queue]).uniq.join(',')
+      if new_config.has_key?(:auto_enable_queue) && new_config[:auto_enable_queue]
+        env = ENV['QUEUE'] || ''
+        ENV['QUEUE'] = (env.split(',') << @@configuration[:queue]).uniq.join(',')
+      end
     end
 
     def self.load_configuration

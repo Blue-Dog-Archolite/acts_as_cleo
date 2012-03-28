@@ -1,23 +1,22 @@
 module Cleo
   @@net_http = nil
 
-  def self.net_http
-    @@net_http unless @@net_http.blank?
-    uri = URI.parse(Cleo::Server.url)
-
-    @@net_http = Net::HTTP.new(uri.host, uri.port)
-  end
-
-  def self.get(uri)
-    response = net_http.request(Net::HTTP::Get.new(uri.request_uri))
-
-    return response if good_response_code?(response)
+  #define delete, update, create dynamically in order to set up reddis backed calls if enabled
+  #Cleo.update(obj) will respect async settings
+  %w{delete update create}.each do |mn|
+    define_singleton_method(mn.to_s) do |obj|
+      if Cleo::Server.async?
+        Resque.enqueue(Cleo::ResqueCreate, mn,  obj.record_type.classify, obj.id)
+      else
+        Cleo.send("execute_#{mn}".to_sym, obj)
+      end
+    end
   end
 
   def self.find(id)
     #query by element/id to get from cleo fast
     uri = URI.parse(Cleo::Server.url + "#{id}")
-    response = self.get(uri)
+    response = get(uri)
 
     return nil if response.body.blank?
 
@@ -26,13 +25,12 @@ module Cleo
 
   def self.query(query_param)
     uri = URI.parse(Cleo::Server.url + "search?query=#{CGI::escape query_param}")
-    response = self.get(uri)
+    response = get(uri)
 
     Cleo::Result.parse(response.body, :single => false)
   end
 
-
-  def self.update(obj)
+  def self.execute_update(obj)
     obj = obj.to_cleo_result unless obj.is_a?(Cleo::Result)
 
     uri = URI.parse Cleo::Server.url + "#{obj.id}"
@@ -45,7 +43,9 @@ module Cleo
     return good_response_code?(response)
   end
 
-  def self.delete(obj_or_id)
+
+  def self.execute_delete(obj_or_id)
+
     cleo_id = nil
     if obj_or_id.is_a?(Cleo::Result)
       cleo_id = obj_or_id.id
@@ -63,7 +63,7 @@ module Cleo
     return good_response_code?(response)
   end
 
-  def self.create(obj)
+  def self.execute_create(obj)
     obj = obj.to_cleo_result unless obj.is_a?(Cleo::Result)
 
     uri = URI.parse Cleo::Server.url + "_"
@@ -75,6 +75,20 @@ module Cleo
     response = Net::HTTP.new(uri.host, uri.port).start { |http| http.request request }
 
     return good_response_code?(response)
+  end
+
+  private
+  def self.net_http
+    @@net_http unless @@net_http.blank?
+    uri = URI.parse(Cleo::Server.url)
+
+    @@net_http = Net::HTTP.new(uri.host, uri.port)
+  end
+
+  def self.get(uri)
+    response = net_http.request(Net::HTTP::Get.new(uri.request_uri))
+
+    return response if good_response_code?(response)
   end
 
   private

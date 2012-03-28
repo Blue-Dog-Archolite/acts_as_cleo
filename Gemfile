@@ -14,6 +14,7 @@ group :development, :test do
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'fixtures'
   gem 'sqlite3'
+  gem 'database_cleaner'
 end
 
 gem 'happymapper'

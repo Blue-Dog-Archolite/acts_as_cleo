@@ -7,11 +7,6 @@ class TestCleo < Test::Unit::TestCase
     @wedge = Cleo::Result.parse(contents, :singluar => true)
   end
 
-  should "get HTTP Connection" do
-    net = Cleo.net_http
-    assert_not_equal nil, net
-  end
-
   should "create then destroy Testing Object " do
     code = Cleo.create(@wedge)
     assert code
@@ -26,7 +21,7 @@ class TestCleo < Test::Unit::TestCase
   should "get google results from qery" do
     r = Cleo.query("goog")
     assert_not_nil r
-    assert_equal 1, r.count
+    assert_equal 0, r.count
     assert_kind_of Array, r
   end
 

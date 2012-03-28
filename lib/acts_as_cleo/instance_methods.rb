@@ -2,30 +2,18 @@ module ActsAsCleo
   module InstanceMethods
     # callback hooks to keep cleo insync with data
     def create_cleo
-      set_cleo_id
-      if Cleo::Server.async?
-        Resque.enqueue(Cleo::ResqueCreate, record_type.classify, self.id)
-      else
-        Cleo.create(self)
-      end
+      Cleo.create(self)
     end
 
     def update_cleo
-      if Cleo::Server.async?
-        Resque.enqueue(Cleo::ResqueUpdate, record_type.classify, self.id)
-      else
-        Cleo.update(self)
-      end
+      Cleo.update(self)
     end
 
     def remove_from_cleo
-      if Cleo::Server.async?
-        Resque.enqueue(Cleo::ResqueDelete, record_type.classify, self.id)
-      else
-        Cleo.delete(self.cleo_id)
-        cr = cleo_reference
-        cr.delete
-      end
+      cr = cleo_reference
+      cr.delete
+
+      Cleo.delete(self.cleo_id)
     end
 
     def set_cleo_id
