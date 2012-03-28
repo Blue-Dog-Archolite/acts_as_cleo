@@ -12,7 +12,7 @@ module ActsAsCleo
     def copy_migration_and_config
       #Resque workers
       %w{update create delete}.each do |life|
-        delete_file "app/jobs/#{life}.rb"
+        remove_file "app/jobs/#{life}.rb"
       end
 
       #new general processor

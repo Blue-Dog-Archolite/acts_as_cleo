@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "acts_as_cleo"
-  s.version = "2.3.0"
+  s.version = "2.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robert R. Meyer"]
-  s.date = "2012-03-27"
+  s.date = "2012-03-28"
   s.description = "LinkedIn Open Source type ahead tool's REST API as a ruby gem. Now with Reddis support."
   s.email = "Blue.Dog.Archolite@gmail.com"
   s.extra_rdoc_files = [
@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "lib/acts_as_cleo/acts_methods.rb",
     "lib/acts_as_cleo/class_methods.rb",
     "lib/acts_as_cleo/instance_methods.rb",
+    "lib/acts_as_cleo/private_methods.rb",
     "lib/acts_as_cleo/result.rb",
     "lib/acts_as_cleo/version.rb",
     "lib/cleo.rb",
@@ -37,9 +38,9 @@ Gem::Specification.new do |s|
     "lib/generators/acts_as_cleo/install/templates/cleo.yml",
     "lib/generators/acts_as_cleo/install/templates/cleo_initalizer.rb",
     "lib/generators/acts_as_cleo/install/templates/install.rb",
-    "lib/generators/acts_as_cleo/install/templates/jobs/create.rb",
-    "lib/generators/acts_as_cleo/install/templates/jobs/delete.rb",
-    "lib/generators/acts_as_cleo/install/templates/jobs/update.rb",
+    "lib/generators/acts_as_cleo/install/templates/jobs/cleo_processor.rb",
+    "lib/generators/acts_as_cleo/install/templates/update.rb",
+    "lib/generators/acts_as_cleo/update/update_generator.rb",
     "test/config/cleo.yml",
     "test/data/xml/cleo/element.xml",
     "test/data/xml/cleo/elements.xml",
@@ -52,17 +53,13 @@ Gem::Specification.new do |s|
     "test/db/migrate/005_create_authors.rb",
     "test/db/migrate/006_create_postings.rb",
     "test/db/migrate/007_cleo_table.rb",
-    "test/db/test.db",
     "test/fixtures/authors.yml",
     "test/fixtures/books.yml",
     "test/fixtures/categories.yml",
     "test/fixtures/electronics.yml",
     "test/fixtures/movies.yml",
     "test/helper.rb",
-    "test/models/author.rb",
     "test/models/book.rb",
-    "test/models/category.rb",
-    "test/models/electronic.rb",
     "test/models/movie.rb",
     "test/test_install_generator.rb",
     "test/unit/test_active_record_callback_hooks.rb",
@@ -94,6 +91,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<ruby-debug19>, [">= 0"])
       s.add_development_dependency(%q<fixtures>, [">= 0"])
       s.add_development_dependency(%q<sqlite3>, [">= 0"])
+      s.add_development_dependency(%q<database_cleaner>, [">= 0"])
     else
       s.add_dependency(%q<happymapper>, [">= 0"])
       s.add_dependency(%q<rails>, [">= 3.1.0"])
@@ -106,6 +104,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<ruby-debug19>, [">= 0"])
       s.add_dependency(%q<fixtures>, [">= 0"])
       s.add_dependency(%q<sqlite3>, [">= 0"])
+      s.add_dependency(%q<database_cleaner>, [">= 0"])
     end
   else
     s.add_dependency(%q<happymapper>, [">= 0"])
@@ -119,6 +118,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<ruby-debug19>, [">= 0"])
     s.add_dependency(%q<fixtures>, [">= 0"])
     s.add_dependency(%q<sqlite3>, [">= 0"])
+    s.add_dependency(%q<database_cleaner>, [">= 0"])
   end
 end
 
