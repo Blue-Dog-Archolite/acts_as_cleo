@@ -77,9 +77,7 @@ After running bundle install execute the generate script to install acts_as_cleo
 This generate command will install the following files:
 
 === Background Job Processors
-* app/jobs/create.rb
-* app/jobs/update.rb
-* app/jobs/delete.rb
+* app/jobs/cleo_processor.rb
 
 === Configuration and Initialization files
 * config/cleo.yml

@@ -20,6 +20,7 @@ module ActsAsCleo
 
       #create migration
       migration_template 'install.rb', 'db/migrate/install_acts_as_cleo.rb'
+      migration_template 'update.rb', 'db/migrate/update_acts_as_cleo.rb'
     end
 
     def self.next_migration_number(dirname)
