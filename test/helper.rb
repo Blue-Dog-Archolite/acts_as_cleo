@@ -48,4 +48,9 @@ class Test::Unit::TestCase
   def setup
     DatabaseCleaner.clean
   end
+
+  def teardown
+    Book.destroy_all
+    Movie.destroy_all
+  end
 end

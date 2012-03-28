@@ -47,6 +47,7 @@ module Cleo
   def self.execute_delete(obj_or_id)
 
     cleo_id = nil
+
     if obj_or_id.is_a?(Cleo::Result)
       cleo_id = obj_or_id.id
     elsif obj_or_id.is_a?(Fixnum)

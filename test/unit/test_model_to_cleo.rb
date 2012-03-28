@@ -11,7 +11,7 @@ class TestModelToCleo < Test::Unit::TestCase
       cb = b.as_cleo
     end
 
-    assert_equal cb.name, b.name
+    assert_equal cb.name, b.name.downcase
     assert_equal cb.score, b.cleo_score
     assert_equal 2, cb.terms.count
   end

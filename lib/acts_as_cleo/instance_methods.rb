@@ -11,9 +11,10 @@ module ActsAsCleo
 
     def remove_from_cleo
       cr = cleo_reference
+      current_cleo_id = self.cleo_id
       cr.delete
 
-      Cleo.delete(self.cleo_id)
+      Cleo.delete(current_cleo_id)
     end
 
     def set_cleo_id
@@ -41,7 +42,7 @@ module ActsAsCleo
 
       cr.term = cr.term.compact.reject(&:blank?)
 
-      set_cleo_id if self.cleo_id.nil?
+      set_cleo_id if self.cleo_id.nil? && !self.id.nil?
       cr.id = self.cleo_id
 
       cr.name = self.send(self.cleo_config[:name]).to_s.downcase
