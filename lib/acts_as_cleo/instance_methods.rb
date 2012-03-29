@@ -42,8 +42,7 @@ module ActsAsCleo
         to_process << self.send(term).to_s.downcase
       end
 
-      cr.term = clean_terms_for_storage(to_process)
-
+      cr.term = clean_terms_for_storage(to_process).flatten
 
       set_cleo_id if self.cleo_id.nil? && !self.id.nil?
       cr.id = self.cleo_id
@@ -76,8 +75,8 @@ module ActsAsCleo
 
     private
     def clean_terms_for_storage(to_process)
-      to_process = to_process.compact.reject(&:blank?)
-      to_process.collect!{|i| i.split(/\s+/) }.flatten.compact.uniq
+      to_process = to_process.compact.flatten.reject(&:blank?)
+      to_process.collect!{|i| i.split(/\s+/) }.compact.uniq
       to_process.reject{|i| drop_words.include?(i) }
     end
 

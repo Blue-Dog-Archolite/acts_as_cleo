@@ -6,8 +6,7 @@ module Cleo
   %w{delete update create}.each do |mn|
     define_singleton_method(mn.to_s) do |obj|
       if Cleo::Server.async?
-        obj_id = obj.is_a?(Fixnum) ? obj : obj.id
-        Resque.enqueue(Cleo::Processor, mn,  obj.record_type.classify, obj.id)
+        Resque.enqueue(Cleo::Processor, mn,  obj.class.name, obj.id)
       else
         Cleo.send("execute_#{mn}".to_sym, obj)
       end
