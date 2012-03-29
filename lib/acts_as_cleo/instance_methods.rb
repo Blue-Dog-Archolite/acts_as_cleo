@@ -36,11 +36,14 @@ module ActsAsCleo
       cr = Cleo::Result.new
       cr.term = []
 
+      to_process = []
+
       self.cleo_config[:terms].each do |term|
-        cr.term << self.send(term).to_s.downcase
+        to_process << self.send(term).to_s.downcase
       end
 
-      cr.term = cr.term.compact.reject(&:blank?)
+      cr.term = clean_terms_for_storage(to_process)
+
 
       set_cleo_id if self.cleo_id.nil? && !self.id.nil?
       cr.id = self.cleo_id
@@ -69,6 +72,17 @@ module ActsAsCleo
 
     def cleo_reference
       Cleo::Reference.find(:first, :conditions => ["record_type = ? and record_id = ?", record_type, self.id])
+    end
+
+    private
+    def clean_terms_for_storage(to_process)
+      to_process = to_process.compact.reject(&:blank?)
+      to_process.collect!{|i| i.split(/\s+/) }.flatten.compact.uniq
+      to_process.reject{|i| drop_words.include?(i) }
+    end
+
+    def drop_words
+      %w{and the this that no yes}
     end
   end
 end
