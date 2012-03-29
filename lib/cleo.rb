@@ -52,7 +52,7 @@ module Cleo
       cleo_id = obj_or_id.id
     elsif obj_or_id.is_a?(Fixnum)
       cleo_id = obj_or_id
-    elsif obj_or_id.responds_to?("cleo_id")
+    elsif obj_or_id.respond_to?("cleo_id")
       cleo_id = obj_or_id.cleo_id
     end
 
