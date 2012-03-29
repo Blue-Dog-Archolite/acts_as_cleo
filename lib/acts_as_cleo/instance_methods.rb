@@ -63,7 +63,6 @@ module ActsAsCleo
 
     alias :as_cleo :to_cleo_result
 
-    private
     def record_type
       self.cleo_config[:type]
     end
