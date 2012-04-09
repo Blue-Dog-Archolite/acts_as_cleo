@@ -9,7 +9,6 @@ require File.dirname(__FILE__) + '/acts_as_cleo/instance_methods'
 module ActsAsCleo
   include ActsMethods
 
-  require 'rails/railtie' if defined?(Rails)
 end
 
 ActiveRecord::Base.extend ActsAsCleo

@@ -1,1 +1,1 @@
-Cleo::Server.load_configuration
+Cleo.load_configuration

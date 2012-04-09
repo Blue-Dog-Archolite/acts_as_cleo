@@ -1,5 +1,5 @@
 module Cleo
-  class Reference < ActiveRecord::Base
-
+  class Element < ActiveRecord::Base
+    set_table_name “cleo_elements”
   end
 end

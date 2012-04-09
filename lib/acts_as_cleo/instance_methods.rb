@@ -2,11 +2,11 @@ module ActsAsCleo
   module InstanceMethods
     # callback hooks to keep cleo insync with data
     def create_cleo
-      Cleo.create(self)
+      Cleo::Element.create(self)
     end
 
     def update_cleo
-      Cleo.update(self)
+      Cleo::Element.update(self)
     end
 
     def remove_from_cleo
@@ -14,12 +14,12 @@ module ActsAsCleo
       current_cleo_id = self.cleo_id
       cr.delete
 
-      Cleo.delete(current_cleo_id)
+      Cleo::Element.delete(current_cleo_id)
     end
 
     def set_cleo_id
-      cr = Cleo::Reference.find(:first, :conditions => ["record_type = ? and record_id = ?", record_type, self.id])
-      cr = Cleo::Reference.create(:record_type => record_type, :record_id => self.id) if cr.nil?
+      cr = Cleo::Element.find(:first, :conditions => ["record_type = ? and record_id = ?", record_type, self.id])
+      cr = Cleo::Element.create(:record_type => record_type, :record_id => self.id) if cr.nil?
     end#
     #end callback hooks
 
@@ -70,7 +70,7 @@ module ActsAsCleo
     end
 
     def cleo_reference
-      Cleo::Reference.find(:first, :conditions => ["record_type = ? and record_id = ?", record_type, self.id])
+      Cleo::Element.find(:first, :conditions => ["record_type = ? and record_id = ?", record_type, self.id])
     end
 
     private
