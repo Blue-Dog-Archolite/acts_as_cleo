@@ -17,5 +17,16 @@ module Cleo
     def self.async?
       @@configuration[:async]
     end
+
+
+    def self.good_response_code?(response)
+      case response
+      when Net::HTTPOK
+        flush if Cleo::Service.auto_flush?
+        true   # success response
+      when Net::HTTPClientError, Net::HTTPInternalServerError
+        false  # non-success response
+      end
+    end
   end
 end

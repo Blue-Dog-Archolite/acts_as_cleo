@@ -20,15 +20,6 @@ module Cleo
     Net::HTTP.new(uri.host, uri.port).start { |http| http.request request }
   end
 
-  def self.good_response_code?(response)
-    case response
-    when Net::HTTPOK
-      flush if Cleo::Service.auto_flush?
-      true   # success response
-    when Net::HTTPClientError, Net::HTTPInternalServerError
-      false  # non-success response
-    end
-  end
 
   def self.configure(new_config)
     parts = new_config[:url].split("/")

@@ -11,10 +11,12 @@ module ActsAsCleoConnection
       #Target and Origin calls
       cattr_accessor :cleo_target
       cattr_accessor :cleo_origin
+      cattr_accessor :cleo_type
 
       #Set taggign calls
       self.cleo_origin = opts[:origin]
       self.cleo_target = opts[:target]
+      self.cleo_type = opts[:type]
     end
   end
 end
