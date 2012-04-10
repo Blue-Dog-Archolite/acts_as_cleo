@@ -8,9 +8,13 @@ require 'bundler'
 require 'active_record'
 require 'net/http'
 
-#require acts_as_cleo
 
-require File.dirname(__FILE__) + '/../lib/acts_as_cleo'
+#load Cleo Module for result and server
+require File.dirname(__FILE__) + '/../lib/cleo/cleo'
+
+#require acts_as_cleo
+require File.dirname(__FILE__) + '/../lib/acts_as_cleo/acts_as_cleo'
+#require File.dirname(__FILE__) + '/../lib/acts_as_cleo_connection'
 
 begin
   Bundler.setup(:default, :development)
@@ -42,7 +46,7 @@ models_dir = File.join(file_dirname, 'models')
 Dir[ models_dir + '/*.rb'].each { |m| require m }
 
 server_config = {:url => "http://localhost:8080/cleo-primer/", :run_async => false}
-Cleo::Server.configure server_config
+Cleo.configure server_config
 
 class Test::Unit::TestCase
   def setup

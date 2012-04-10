@@ -1,3 +1,10 @@
+#Load Cleo Sub Modules
+require File.dirname(__FILE__) + '/base_server'
+require File.dirname(__FILE__) + '/connection_server'
+require File.dirname(__FILE__) + '/element_server'
+require File.dirname(__FILE__) + '/service'
+
+
 module Cleo
   @@net_http = nil
 
@@ -23,24 +30,26 @@ module Cleo
 
   def self.configure(new_config)
     parts = new_config[:url].split("/")
-    parts -=  %w{rest elements}
-    parts +=  %w{rest elements}
-    @@configuration[:url] = parts.join('/') + '/'
+    parts -=  %w{rest elements connections}
+    parts += %w{rest}
+
+    Cleo::ElementServer.url = (parts + %w{elements}).join('/') + '/'
+    Cleo::ConnectionServer.url = (parts + %w{connections}).join('/') + '/'
 
     if new_config.has_key?(:async)
-      @@configuration[:async] = new_config[:async]
+      self.async = new_config[:async]
     elsif new_config.has_key?(:run_async)
-      @@configuration[:async] = new_config[:run_async]
+      self.async = new_config[:run_async]
     else
-      @@configuration[:async] = false
+      self.async = false
     end
 
-    @@configuration[:auto_flush] = new_config.has_key?(:auto_flush) ? new_config[:auto_flush] : true
-    @@configuration[:queue] = new_config.has_key?(:queue) ? new_config[:queue] : "cleo"
+    self.auto_flush = new_config.has_key?(:auto_flush) ? new_config[:auto_flush] : true
+    self.queue = new_config.has_key?(:queue) ? new_config[:queue] : "cleo"
 
     if new_config.has_key?(:auto_enable_queue) && new_config[:auto_enable_queue]
       env = ENV['QUEUE'] || ''
-      ENV['QUEUE'] = (env.split(',') << @@configuration[:queue]).uniq.join(',')
+      ENV['QUEUE'] = (env.split(',') << self.queue).uniq.join(',')
     end
   end
 

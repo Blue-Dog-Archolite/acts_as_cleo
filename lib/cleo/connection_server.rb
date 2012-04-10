@@ -1,5 +1,5 @@
 module Cleo
-  module ConnectionServer < Cleo::Base
+  class ConnectionServer < Cleo::Base
     #define delete, update, create dynamically in order to set up reddis backed calls if enabled
     #Cleo.update(obj) will respect async settings
     %w{delete update create disable}.each do |mn|
@@ -16,6 +16,10 @@ module Cleo
     end
 
     def self.execute_disable(con)
+    end
+
+    def self.execute_delete(con)
+      self.execute_disable(con)
     end
 
     def self.execute_update(con)
@@ -39,8 +43,6 @@ module Cleo
 
       return good_response_code?(response)
     end
-
-    alias :execute_disable, :execute_delete
 
   end
 end

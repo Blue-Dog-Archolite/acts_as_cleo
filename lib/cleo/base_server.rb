@@ -1,28 +1,15 @@
 module Cleo
   class Base
-    @@configuration= {:url => 'http://cleo.testingserver.com/cleo-primer/', :run_async => false, :queue => "cleo"}
-
-    def self.url
-      @@configuration[:url]
-    end
-
-    def self.queue
-      @@configuration[:queue].to_sym
-    end
-
-    def self.auto_flush?
-      @@configuration[:auto_flush]
-    end
-
-    def self.async?
-      @@configuration[:async]
-    end
-
+    cattr_accessor :async
+    cattr_accessor :queue
+    cattr_accessor :base_url
+    cattr_accessor :auto_flush
+    cattr_accessor :url
 
     def self.good_response_code?(response)
       case response
       when Net::HTTPOK
-        flush if Cleo::Service.auto_flush?
+        flush if self.auto_flush?
         true   # success response
       when Net::HTTPClientError, Net::HTTPInternalServerError
         false  # non-success response

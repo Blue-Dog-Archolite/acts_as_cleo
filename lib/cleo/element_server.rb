@@ -1,5 +1,5 @@
 module Cleo
-  module ElementServer < Cleo::BaseServer
+  class ElementServer < Cleo::Base
     #define delete, update, create dynamically in order to set up reddis backed calls if enabled
     #Cleo.update(obj) will respect async settings
     %w{delete update create}.each do |mn|
