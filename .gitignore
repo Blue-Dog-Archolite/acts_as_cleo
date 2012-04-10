@@ -3,8 +3,8 @@
 Gemfile.lock
 
 #rvm
-/.rvmrc
-.rvmrc
+#/.rvmrc
+#.rvmrc
 
 *.gem
 *.rbc
