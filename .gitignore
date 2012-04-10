@@ -25,5 +25,5 @@ tmp
 tags
 
 #db
-test/db/testing_db.sqlite
+#test/db/testing_db.sqlite
 debug.log
