@@ -6,13 +6,10 @@ require File.dirname(__FILE__) + '/service'
 
 
 module Cleo
-  @@net_http = nil
 
   def self.net_http
-    @@net_http unless @@net_http.blank?
     uri = URI.parse(Cleo::Service.url)
-
-    @@net_http = Net::HTTP.new(uri.host, uri.port)
+    Net::HTTP.new(uri.host, uri.port)
   end
 
   def self.get(uri)
@@ -27,7 +24,6 @@ module Cleo
     Net::HTTP.new(uri.host, uri.port).start { |http| http.request request }
   end
 
-
   def self.configure(new_config)
     parts = new_config[:url].split("/")
     parts -=  %w{rest elements connections}
@@ -37,19 +33,19 @@ module Cleo
     Cleo::ConnectionServer.url = (parts + %w{connections}).join('/') + '/'
 
     if new_config.has_key?(:async)
-      self.async = new_config[:async]
+      Cleo::Service.async = new_config[:async]
     elsif new_config.has_key?(:run_async)
-      self.async = new_config[:run_async]
+      Cleo::Service.async = new_config[:run_async]
     else
-      self.async = false
+      Cleo::Service.async = false
     end
 
-    self.auto_flush = new_config.has_key?(:auto_flush) ? new_config[:auto_flush] : true
-    self.queue = new_config.has_key?(:queue) ? new_config[:queue] : "cleo"
+    Cleo::Service.auto_flush = new_config.has_key?(:auto_flush) ? new_config[:auto_flush] : true
+    Cleo::Service.queue = new_config.has_key?(:queue) ? new_config[:queue] : "cleo"
 
     if new_config.has_key?(:auto_enable_queue) && new_config[:auto_enable_queue]
       env = ENV['QUEUE'] || ''
-      ENV['QUEUE'] = (env.split(',') << self.queue).uniq.join(',')
+      ENV['QUEUE'] = (env.split(',') << Cleo::Service.queue).uniq.join(',')
     end
   end
 
