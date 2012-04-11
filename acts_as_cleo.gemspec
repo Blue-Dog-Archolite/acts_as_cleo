@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "acts_as_cleo.gemspec",
+    "lib/acts_as_cleo.rb",
     "lib/acts_as_cleo/acts_as_cleo.rb",
     "lib/acts_as_cleo/acts_methods.rb",
     "lib/acts_as_cleo/class_methods.rb",
