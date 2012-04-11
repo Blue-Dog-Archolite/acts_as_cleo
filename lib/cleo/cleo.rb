@@ -31,6 +31,8 @@ module Cleo
     parts -=  %w{rest elements connections}
     parts += %w{rest}
 
+    Cleo::Service.base_url = parts.join('/') + '/'
+
     Cleo::ElementServer.url = (parts + %w{elements}).join('/') + '/'
     Cleo::ConnectionServer.url = (parts + %w{connections}).join('/') + '/'
 
