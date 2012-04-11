@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robert R. Meyer"]
-  s.date = "2012-03-29"
+  s.date = "2012-04-11"
   s.description = "LinkedIn Open Source type ahead tool's REST API as a ruby gem. Now with Reddis support."
   s.email = "Blue.Dog.Archolite@gmail.com"
   s.extra_rdoc_files = [
@@ -17,30 +17,39 @@ Gem::Specification.new do |s|
     "README.rdoc"
   ]
   s.files = [
+    ".rvmrc",
     "Gemfile",
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
     "VERSION",
     "acts_as_cleo.gemspec",
-    "lib/acts_as_cleo.rb",
+    "lib/acts_as_cleo/acts_as_cleo.rb",
     "lib/acts_as_cleo/acts_methods.rb",
     "lib/acts_as_cleo/class_methods.rb",
     "lib/acts_as_cleo/instance_methods.rb",
     "lib/acts_as_cleo/private_methods.rb",
     "lib/acts_as_cleo/result.rb",
     "lib/acts_as_cleo/version.rb",
-    "lib/cleo.rb",
-    "lib/cleo/reference.rb",
-    "lib/cleo/result.rb",
-    "lib/cleo/server.rb",
+    "lib/acts_as_cleo_connection/acts_as_cleo_connection.rb",
+    "lib/acts_as_cleo_connection/acts_methods.rb",
+    "lib/acts_as_cleo_connection/instance_methods.rb",
+    "lib/cleo/base_server.rb",
+    "lib/cleo/cleo.rb",
+    "lib/cleo/connection_server.rb",
+    "lib/cleo/element.rb",
+    "lib/cleo/element_server.rb",
+    "lib/cleo/service.rb",
     "lib/generators/acts_as_cleo/install/install_generator.rb",
     "lib/generators/acts_as_cleo/install/templates/cleo.yml",
     "lib/generators/acts_as_cleo/install/templates/cleo_initalizer.rb",
     "lib/generators/acts_as_cleo/install/templates/install.rb",
-    "lib/generators/acts_as_cleo/install/templates/jobs/cleo_processor.rb",
+    "lib/generators/acts_as_cleo/install/templates/jobs/cleo_connection_processor.rb",
+    "lib/generators/acts_as_cleo/install/templates/jobs/cleo_element_processor.rb",
     "lib/generators/acts_as_cleo/install/templates/update.rb",
     "lib/generators/acts_as_cleo/update/update_generator.rb",
+    "lib/xml/connection.rb",
+    "lib/xml/result.rb",
     "test/config/cleo.yml",
     "test/data/xml/cleo/element.xml",
     "test/data/xml/cleo/elements.xml",
@@ -53,6 +62,7 @@ Gem::Specification.new do |s|
     "test/db/migrate/005_create_authors.rb",
     "test/db/migrate/006_create_postings.rb",
     "test/db/migrate/007_cleo_table.rb",
+    "test/db/testing_db.sqlite",
     "test/fixtures/authors.yml",
     "test/fixtures/books.yml",
     "test/fixtures/categories.yml",
