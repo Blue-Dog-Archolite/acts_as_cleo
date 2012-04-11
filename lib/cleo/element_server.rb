@@ -47,12 +47,12 @@ module Cleo
     def self.execute_delete(obj_or_id)
       cleo_id = nil
 
-      if obj_or_id.is_a?(Cleo::Xml::Result)
-        cleo_id = obj_or_id.id
-      elsif obj_or_id.is_a?(Fixnum)
+      if obj_or_id.is_a?(Fixnum)
         cleo_id = obj_or_id
       elsif obj_or_id.respond_to?("cleo_id")
         cleo_id = obj_or_id.cleo_id
+      elsif obj_or_id.is_a?(Cleo::Xml::Result)
+        cleo_id = obj_or_id.id
       end
 
       uri = URI.parse Cleo::Service.element_server_url + "#{cleo_id}"

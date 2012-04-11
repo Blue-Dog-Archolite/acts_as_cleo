@@ -58,6 +58,10 @@ module Cleo
 
     if File.exists?( cleo_file_path )
       Cleo.configure(YAML::load_file( cleo_file_path )[Rails.env].symbolize_keys)
+      true
+    else
+      raise ArgumentError.new("No configuration file found. Check for cleo.yml")
+      false
     end
   end
 end
