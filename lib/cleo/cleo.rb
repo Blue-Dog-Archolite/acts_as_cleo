@@ -10,18 +10,18 @@ module Cleo
   end
 
   def self.net_http
-    uri = URI.parse(Cleo::Service.base_url)
+    uri = URI.parse(Cleo::Service.url)
     Net::HTTP.new(uri.host, uri.port)
   end
 
   def self.get(uri)
     response = net_http.request(Net::HTTP::Get.new(uri.request_uri))
 
-    return response if good_response_code?(response)
+    return response if Cleo::Service.good_response_code?(response)
   end
 
   def self.flush
-    uri = URI.parse Cleo::Service.url + "flush"
+    uri = URI.parse Cleo::Service.url + "elements/flush"
     request = Net::HTTP::Post.new(uri.path)
     Net::HTTP.new(uri.host, uri.port).start { |http| http.request request }
   end

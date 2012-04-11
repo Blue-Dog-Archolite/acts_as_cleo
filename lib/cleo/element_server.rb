@@ -28,11 +28,11 @@ module Cleo
       uri = URI.parse(Cleo::Service.element_server_url + "search?query=#{CGI::escape query_param}")
       response = Cleo.get(uri)
 
-      Cleo::Result.parse(response.body, :single => false)
+      Cleo::Xml::Result.parse(response.body, :single => false)
     end
 
     def self.execute_update(obj)
-      obj = obj.to_cleo_result unless obj.is_a?(Cleo::Result)
+      obj = obj.to_cleo_result unless obj.is_a?(Cleo::Xml::Result)
 
       uri = URI.parse Cleo::Service.element_server_url + "#{obj.id}"
       request = Net::HTTP::Put.new(uri.path)
@@ -47,7 +47,7 @@ module Cleo
     def self.execute_delete(obj_or_id)
       cleo_id = nil
 
-      if obj_or_id.is_a?(Cleo::Result)
+      if obj_or_id.is_a?(Cleo::Xml::Result)
         cleo_id = obj_or_id.id
       elsif obj_or_id.is_a?(Fixnum)
         cleo_id = obj_or_id

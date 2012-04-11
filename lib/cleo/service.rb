@@ -1,6 +1,6 @@
 module Cleo
   class Service < Cleo::Base
-    def self.base_url
+    def self.url
       return self.base_url
     end
 

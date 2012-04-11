@@ -7,11 +7,11 @@ class TestClassMethods < Test::Unit::TestCase
 
   should "find record with book name" do
     book = Book.create(:name => "Otherland", :author => "Tad Williams")
-    assert Cleo.create(book)
+    assert Cleo::ElementServer.create(book)
     book_cleo_id = book.cleo_id
-    assert Cleo.find(book_cleo_id)
+    assert Cleo::ElementServer.find(book_cleo_id)
 
-    assert Cleo.delete(book_cleo_id), "Didn't Delete"
+    assert Cleo::ElementServer.delete(book_cleo_id), "Didn't Delete"
   end
 
   should "be able to query from Klass" do

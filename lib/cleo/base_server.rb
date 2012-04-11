@@ -9,10 +9,14 @@ module Cleo
       async == true
     end
 
+    def self.auto_flush?
+      auto_flush == true
+    end
+
     def self.good_response_code?(response)
       case response
       when Net::HTTPOK
-        flush if self.auto_flush?
+        Cleo.flush if self.auto_flush?
         true   # success response
       when Net::HTTPClientError, Net::HTTPInternalServerError
         false  # non-success response
