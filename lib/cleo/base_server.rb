@@ -4,7 +4,6 @@ module Cleo
     cattr_accessor :queue
     cattr_accessor :base_url
     cattr_accessor :auto_flush
-    cattr_accessor :url
 
     def self.async?
       async == true

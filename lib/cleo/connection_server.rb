@@ -1,5 +1,7 @@
 module Cleo
   class ConnectionServer < Cleo::Base
+    cattr_accessor :url
+
     #define delete, update, create dynamically in order to set up reddis backed calls if enabled
     #Cleo.update(obj) will respect async settings
     %w{delete update create disable}.each do |mn|

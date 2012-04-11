@@ -4,11 +4,13 @@ require File.dirname(__FILE__) + '/connection_server'
 require File.dirname(__FILE__) + '/element_server'
 require File.dirname(__FILE__) + '/service'
 
-
 module Cleo
+  def self.query(query)
+    Cleo::ElementServer.query(query)
+  end
 
   def self.net_http
-    uri = URI.parse(Cleo::Service.url)
+    uri = URI.parse(Cleo::Service.base_url)
     Net::HTTP.new(uri.host, uri.port)
   end
 
