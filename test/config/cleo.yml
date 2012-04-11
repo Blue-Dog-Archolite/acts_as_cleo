@@ -1,16 +1,16 @@
 # Config file for the acts_as_cleo plugin.
 development:
-  url: "http://localhost:8080/cleo-primer/"
+  url: "http://localhost:3030/cleo-primer/"
 
 test:
-  url: "http://localhost:8080/cleo-primer/"
+  url: "http://localhost:3030/cleo-primer/"
 
 production:
-  url: "http://localhost:8080/cleo-primer/"
+  url: "http://localhost:3030/cleo-primer/"
   run_async: true
   queue: "cleo"
 
 async_test:
-  url: "http://localhost:8080/cleo-primer/"
+  url: "http://localhost:3030/cleo-primer/"
   run_async: true
   queue: "cleo"

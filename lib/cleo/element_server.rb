@@ -7,7 +7,7 @@ module Cleo
         if Cleo::Service.async?
           Resque.enqueue(Cleo::ElementProcessor, mn,  obj.class.name, obj.id)
         else
-          Cleo.send("execute_#{mn}".to_sym, obj)
+          Cleo::ElementServer.send("execute_#{mn}".to_sym, obj)
         end
       end
     end
@@ -62,7 +62,7 @@ module Cleo
     end
 
     def self.execute_create(obj)
-      obj = obj.to_cleo_result unless obj.is_a?(Cleo::Result)
+      obj = obj.to_cleo_result unless obj.is_a?(Cleo::Xml::Result)
 
       uri = URI.parse Cleo::Service.url + "_"
       request = Net::HTTP::Post.new(uri.path)

@@ -6,6 +6,10 @@ module Cleo
     cattr_accessor :auto_flush
     cattr_accessor :url
 
+    def self.async?
+      async == true
+    end
+
     def self.good_response_code?(response)
       case response
       when Net::HTTPOK

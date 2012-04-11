@@ -2,11 +2,11 @@ module ActsAsCleo
   module InstanceMethods
     # callback hooks to keep cleo insync with data
     def create_cleo
-      Cleo::Element.create(self)
+      Cleo::ElementServer.create(self)
     end
 
     def update_cleo
-      Cleo::Element.update(self)
+      Cleo::ElementServer.update(self)
     end
 
     def remove_from_cleo
@@ -14,7 +14,7 @@ module ActsAsCleo
       current_cleo_id = self.cleo_id
       cr.delete
 
-      Cleo::Element.delete(current_cleo_id)
+      Cleo::ElementServer.delete(current_cleo_id)
     end
 
     def set_cleo_id
@@ -32,8 +32,8 @@ module ActsAsCleo
     end
 
     def to_cleo_result
-      #take self and change it into a Cleo::Result and return
-      cr = Cleo::Result.new
+      #take self and change it into a Cleo::Xml::Result and return
+      cr = Cleo::Xml::Result.new
       cr.term = []
 
       to_process = []

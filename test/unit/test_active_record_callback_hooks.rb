@@ -4,17 +4,17 @@ class TestActiveRecordCallbacHooks < Test::Unit::TestCase
   should "have all callbacks functioning properly" do
     book = Book.new(:name => "set cleo id", :author => "Rob Meyer")
     assert_nil book.cleo_id
-    assert_nil Cleo::Reference.find(:first, :conditions => ["record_type = ? and record_id = ?", "Book", book.id])
+    assert_nil Cleo::Element.find(:first, :conditions => ["record_type = ? and record_id = ?", "Book", book.id])
 
     assert book.save!
     book_id = book.id
 
     assert book.cleo_id
-    ref = Cleo::Reference.find(:first, :conditions => ["record_type = ? and record_id = ?", "Book", book_id])
+    ref = Cleo::Element.find(:first, :conditions => ["record_type = ? and record_id = ?", "Book", book_id])
     assert_not_nil ref
 
     assert book.destroy
-    assert_nil Cleo::Reference.find(:first, :conditions => ["record_type = ? and record_id = ?", "Book", book_id])
+    assert_nil Cleo::Element.find(:first, :conditions => ["record_type = ? and record_id = ?", "Book", book_id])
     assert_nil Cleo.find(ref.id)
   end
 

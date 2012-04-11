@@ -1,5 +1,5 @@
 module Cleo
   class Element < ActiveRecord::Base
-    set_table_name “cleo_elements”
+    self.table_name = 'references'
   end
 end

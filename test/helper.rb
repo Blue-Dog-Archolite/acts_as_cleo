@@ -12,6 +12,13 @@ require 'net/http'
 #load Cleo Module for result and server
 require File.dirname(__FILE__) + '/../lib/cleo/cleo'
 
+#load Cleo reference
+require File.dirname(__FILE__) + '/../lib/cleo/element'
+
+#load xml elements
+require File.dirname(__FILE__) + '/../lib/xml/connection'
+require File.dirname(__FILE__) + '/../lib/xml/result'
+
 #require acts_as_cleo
 require File.dirname(__FILE__) + '/../lib/acts_as_cleo/acts_as_cleo'
 #require File.dirname(__FILE__) + '/../lib/acts_as_cleo_connection'
