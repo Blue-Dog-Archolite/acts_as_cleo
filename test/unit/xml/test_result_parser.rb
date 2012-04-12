@@ -1,4 +1,4 @@
-require "#{File.dirname(File.expand_path(__FILE__))}/../helper"
+require "#{File.dirname(File.expand_path(__FILE__))}/../../helper"
 
 class TestResult < Test::Unit::TestCase
   def test_parser_gets_correct_element

@@ -1,4 +1,4 @@
-require 'helper'
+require "#{File.dirname(File.expand_path(__FILE__))}/../../helper"
 
 class TestInstanceMethods < Test::Unit::TestCase
   def setup

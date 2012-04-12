@@ -1,4 +1,4 @@
-require 'helper'
+require "#{File.dirname(File.expand_path(__FILE__))}/../../helper"
 
 class TestModelToCleo < Test::Unit::TestCase
   should "convert from model to cleo result" do

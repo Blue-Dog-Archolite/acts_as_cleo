@@ -1,4 +1,4 @@
-require 'helper'
+require "#{File.dirname(File.expand_path(__FILE__))}/../../helper"
 
 #Literally checking that the acts_as_cleo tag takes args and sets them as expected
 class TestActsAsMethods < Test::Unit::TestCase

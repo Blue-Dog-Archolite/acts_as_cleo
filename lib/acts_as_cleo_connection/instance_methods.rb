@@ -15,5 +15,19 @@ module ActsAsCleoConnection
     def disable_cleo_connection
       Cleo::Connection.disable(self)
     end
+
+    def to_cleo_connection
+      source = self.send("#{cleo_source}")
+      target = self.send("#{cleo_target}")
+      Cleo::Xml::Connection.new(:source => source.cleo_id,
+                                         :target => target.cleo_id,
+                                         :active => self.active,
+                                         :strength => self.strength,
+                                         :type => self.cleo_type
+                                        )
+    end
+
+    alias :as_connection :to_cleo_connection
+
   end
 end

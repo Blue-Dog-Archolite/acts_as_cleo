@@ -61,7 +61,9 @@ class Test::Unit::TestCase
   end
 
   def teardown
+    Author.destroy_all
     Book.destroy_all
+    Category.destroy_all
     Movie.destroy_all
   end
 end

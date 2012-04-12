@@ -1,4 +1,4 @@
-require 'helper'
+require "#{File.dirname(File.expand_path(__FILE__))}/../../helper"
 
 class TestClassMethods < Test::Unit::TestCase
   should "respond to query call" do

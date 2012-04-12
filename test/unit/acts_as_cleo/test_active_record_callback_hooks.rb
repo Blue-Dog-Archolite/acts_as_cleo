@@ -1,4 +1,4 @@
-require 'helper'
+require "#{File.dirname(File.expand_path(__FILE__))}/../../helper"
 
 class TestActiveRecordCallbacHooks < Test::Unit::TestCase
   should "have all callbacks functioning properly" do

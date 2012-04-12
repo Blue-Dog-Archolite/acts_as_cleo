@@ -15,25 +15,32 @@ module Cleo
     end
 
     def self.execute_create(con)
+      obj = con.to_connection unless con.is_a?(Cleo::Xml::Connection)
+
+      uri = URI.parse Cloe::SErver.connection_url + "_"
+      request = Net::HTTP::Post.new(uri.path)
+
+      request.body = obj.to_xml
+      request.content_type = 'application/xml'
+
+      response = Net::HTTP.new(uri.host, uri.port).start { |http| http.request request }
+
+      return good_response_code?(response)
     end
 
     def self.execute_disable(con)
+      sender = con.to_connection unless con.is_a?(Cleo::Xml::Connection)
+      sender.active = false
+
+      return self.execute_update(sender)
     end
 
     def self.execute_delete(con)
-      self.execute_disable(con)
+      return self.execute_disable(con)
     end
 
     def self.execute_update(con)
-      source = con.send("#{cleo_source}")
-      target = con.send("#{cleo_target}")
-
-      sender = Cleo::Xml::Connection.new(:source => source.cleo_id,
-                                         :target => target.cleo_id,
-                                         :active => con.active,
-                                         :strength => con.strength,
-                                         :type => con.cleo_type
-                                        )
+      sender = con.to_connection unless con.is_a?(Cleo::Xml::Connection)
 
       uri = URI.parse Cleo::Service.connection_url + "_"
       request = Net::HTTP::Post.new(uri.path)
