@@ -15,7 +15,7 @@ module Cleo
     end
 
     def self.execute_create(con)
-      obj = con.to_connection unless con.is_a?(Cleo::Xml::Connection)
+      obj = con.as_connection unless con.is_a?(Cleo::Xml::Connection)
 
       uri = URI.parse Cloe::SErver.connection_url + "_"
       request = Net::HTTP::Post.new(uri.path)
@@ -29,7 +29,7 @@ module Cleo
     end
 
     def self.execute_disable(con)
-      sender = con.to_connection unless con.is_a?(Cleo::Xml::Connection)
+      sender = con.as_connection unless con.is_a?(Cleo::Xml::Connection)
       sender.active = false
 
       return self.execute_update(sender)
@@ -40,7 +40,7 @@ module Cleo
     end
 
     def self.execute_update(con)
-      sender = con.to_connection unless con.is_a?(Cleo::Xml::Connection)
+      sender = con.as_connection unless con.is_a?(Cleo::Xml::Connection)
 
       uri = URI.parse Cleo::Service.connection_url + "_"
       request = Net::HTTP::Post.new(uri.path)

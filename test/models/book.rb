@@ -1,11 +1,7 @@
-# Table fields for 'books'
-# - id
-# - category_id
-# - name
-# - author
-
 class Book < ActiveRecord::Base
-  belongs_to :category
+  has_many :category
+  belongs_to :author
+
 
   acts_as_cleo :terms => %w{name author}, :score => "cleo_score", :name => "name"
 

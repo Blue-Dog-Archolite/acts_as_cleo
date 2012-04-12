@@ -29,17 +29,14 @@ Jeweler::RubygemsDotOrgTasks.new
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
+  puts "*" * 100
+  puts "WARNING CURRENTLY SLECTING ONLY _test.rb FILES FOR TESTING"
+  puts "*" * 100
+  puts "Should select test_*.rb and rename other files to match"
+  puts "*" * 100
+  test.pattern = 'test/**/*_test.rb'
   test.verbose = true
 end
-
-#require 'rcov/rcovtask'
-#Rcov::RcovTask.new do |test|
-#  test.libs << 'test'
-#  test.pattern = 'test/**/test_*.rb'
-#  test.verbose = true
-#  test.rcov_opts << '--exclude "gems/*"'
-#end
 
 task :default => :test
 

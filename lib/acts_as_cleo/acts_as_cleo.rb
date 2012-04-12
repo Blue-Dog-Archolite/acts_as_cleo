@@ -5,7 +5,6 @@ require File.dirname(__FILE__) + '/instance_methods'
 
 module ActsAsCleo
   include ActsMethods
-
 end
 
 ActiveRecord::Base.extend ActsAsCleo
