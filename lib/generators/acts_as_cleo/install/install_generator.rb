@@ -16,7 +16,8 @@ module ActsAsCleo
       copy_file 'cleo_initalizer.rb', 'config/initalizers/cleo_initalizer.rb'
 
       #Resque workers
-      copy_file "jobs/cleo_processor.rb", "app/jobs/cleo_processor.rb"
+      copy_file "jobs/cleo_connection_processor.rb", "app/jobs/cleo_connection_processor.rb"
+      copy_file "jobs/cleo_element_processor.rb", "app/jobs/cleo_element_processor.rb"
 
       #create migration
       migration_template 'install.rb', 'db/migrate/install_acts_as_cleo.rb'

@@ -14,9 +14,11 @@ module ActsAsCleo
       %w{update create delete}.each do |life|
         remove_file "app/jobs/#{life}.rb"
       end
+      remove_file "app/jobs/cleo_processor.rb"
 
-      #new general processor
-      copy_file "jobs/cleo_processor.rb", "app/jobs/cleo_processor.rb"
+      #Resque workers
+      copy_file "jobs/cleo_connection_processor.rb", "app/jobs/cleo_connection_processor.rb"
+      copy_file "jobs/cleo_element_processor.rb", "app/jobs/cleo_element_processor.rb"
 
       #create migration
       migration_template 'update.rb', 'db/migrate/update_acts_as_cleo.rb'
