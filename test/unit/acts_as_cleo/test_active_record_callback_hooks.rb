@@ -2,7 +2,7 @@ require "#{File.dirname(File.expand_path(__FILE__))}/../../helper"
 
 class TestActiveRecordCallbacHooks < Test::Unit::TestCase
   should "have all callbacks functioning properly" do
-    book = Book.new(:name => "set cleo id", :author => "Rob Meyer")
+    book = Book.new(:name => "set cleo id", :author => Author.new(:name => "Rob Meyer"))
     assert_nil book.cleo_id
     assert_nil Cleo::Element.find(:first, :conditions => ["record_type = ? and record_id = ?", "Book", book.id])
 
@@ -19,7 +19,7 @@ class TestActiveRecordCallbacHooks < Test::Unit::TestCase
   end
 
   should "update cleo on record update" do
-    book = Book.new(:name => "update cleo", :author => "Rob Meyer")
+    book = Book.new(:name => "update cleo", :author => Author.new(:name => "Rob Meyer"))
     assert book.save!
     cleo_record = Cleo::ElementServer.find(book.cleo_id)
     assert_not_nil cleo_record

@@ -4,7 +4,7 @@ require "#{File.dirname(File.expand_path(__FILE__))}/../../helper"
 class TestActsAsMethods < Test::Unit::TestCase
 
   should "respond to and return as_cleo" do
-    book = Book.new(:name => 'Wedge\'s Life', :author => "Luke Skywalker")
+    book = Book.new(:name => 'Wedge\'s Life', :author => Author.create(:name => "Luke Skywalker"))
     assert_equal %w{name author}, book.cleo_config[:terms]
     assert_equal "name", book.cleo_config[:name]
     assert_equal "Book", book.cleo_config[:type]

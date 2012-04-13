@@ -29,13 +29,8 @@ Jeweler::RubygemsDotOrgTasks.new
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
-  puts "*" * 100
-  puts "WARNING CURRENTLY SLECTING ONLY _test.rb FILES FOR TESTING"
-  puts "*" * 100
-  puts "Should select test_*.rb and rename other files to match"
-  puts "*" * 100
-  test.pattern = 'test/**/*_test.rb'
-  test.verbose = true
+  test.pattern = 'test/**/test_*.rb'
+  test.verbose = false
 end
 
 task :default => :test

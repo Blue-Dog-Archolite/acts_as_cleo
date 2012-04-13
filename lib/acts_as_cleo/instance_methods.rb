@@ -50,20 +50,25 @@ module ActsAsCleo
       cr.name = self.send(self.cleo_config[:name]).to_s.downcase
       cr.name = cr.term.first if cr.name.blank?
 
-      score = self.send(self.cleo_config[:score])
+      cr.score = self.score
 
-      if score.nil?
-        cr.score = 0
-      elsif score.respond_to?("count")
-        cr.score = score.count
-      else
-        cr.score = score
-      end
 
       cr
     end
 
     alias :as_cleo :to_cleo_result
+
+    def score
+      score = self.send(self.cleo_config[:score])
+      if score.nil?
+        return 0
+      elsif score.respond_to?("count")
+        return score.count
+      end
+
+      return score
+    end
+
 
     def record_type
       self.cleo_config[:type]

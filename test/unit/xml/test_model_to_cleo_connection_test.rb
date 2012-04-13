@@ -19,7 +19,15 @@ class TestModelToCleoConnection < Test::Unit::TestCase
       cb = @con.as_connection
     end
 
-    assert_equal cb.target, @con.target.cleo_id
-    assert_equal cb.source, @con.source.cleo_id
+    assert_equal cb.target, @con.send("#{@con.cleo_target}").cleo_id
+    assert_equal cb.source, @con.send("#{@con.cleo_origin}").cleo_id
+
+    cb = nil
+    assert_nothing_raised do
+      cb = @con.to_cleo_connection
+    end
+
+    assert_equal cb.target, @con.send("#{@con.cleo_target}").cleo_id
+    assert_equal cb.source, @con.send("#{@con.cleo_origin}").cleo_id
   end
 end

@@ -7,6 +7,12 @@ class TestCleo < Test::Unit::TestCase
     @wedge = Cleo::Xml::Result.parse(contents, :singluar => true)
   end
 
+  should "call to Element server from query call" do
+    assert_nothing_raised do
+      Cleo.query("what the hell")
+    end
+  end
+
   should "create then destroy Testing Object " do
     code = Cleo::ElementServer.create(@wedge)
     assert code

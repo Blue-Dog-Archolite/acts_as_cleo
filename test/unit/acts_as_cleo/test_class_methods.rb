@@ -6,7 +6,7 @@ class TestClassMethods < Test::Unit::TestCase
   end
 
   should "find record with book name" do
-    book = Book.create(:name => "Otherland", :author => "Tad Williams")
+    book = Book.create(:name => "Otherland", :author => Author.create(:name => "Tad Williams"))
     assert Cleo::ElementServer.create(book)
     book_cleo_id = book.cleo_id
     assert Cleo::ElementServer.find(book_cleo_id)

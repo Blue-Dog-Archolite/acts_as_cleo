@@ -10,6 +10,4 @@ class TestInstanceMethods < Test::Unit::TestCase
       assert @b.respond_to?(resp), "ActiveRecord Model with acts_as_cleo should respond to #{resp}"
     end
   end
-
-  #TODO write tests for the functionality of each of the instance methods
 end

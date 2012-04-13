@@ -20,13 +20,17 @@ module ActsAsCleoConnection
       source = self.send("#{cleo_origin}")
       target = self.send("#{cleo_target}")
       is_active = self.respond_to?(:active) ? self.active : nil
+      str = target.score + source.score
 
-      Cleo::Xml::Connection.new(:source => source.cleo_id,
-                                         :target => target.cleo_id,
-                                         :active => is_active,
-                                         :strength => self.strength,
-                                         :type => self.cleo_type
-                                        )
+      result = Cleo::Xml::Connection.new
+
+      result.source = source.cleo_id
+      result.target = target.cleo_id
+      result.active = is_active
+      result.strength = str
+      result.type = self.cleo_type
+
+      return result
     end
 
     alias :as_connection :to_cleo_connection
