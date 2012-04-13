@@ -8,7 +8,7 @@ class TestActiveRecordCallbacHooks < Test::Unit::TestCase
   end
 
   should "have acts_as_cleo_connection hooks and respond to them as expected" do
-    con = @con
+    con = Category.new(:book => @book, :author => @author)
 
     assert_not_nil con.book
     assert_not_nil con.author
@@ -29,8 +29,5 @@ class TestActiveRecordCallbacHooks < Test::Unit::TestCase
     assert_equal con.cleo_origin, "book"
     assert_equal con.cleo_target, "author"
     assert_equal con.cleo_type, "isaidso"
-  end
-
-  should "create cleo connection on record creation" do
   end
 end

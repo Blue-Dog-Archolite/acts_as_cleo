@@ -19,6 +19,8 @@ module ActsAsCleoConnection
     def to_cleo_connection
       source = self.send("#{cleo_origin}")
       target = self.send("#{cleo_target}")
+      return nil if target.blank? || source.blank?
+
       is_active = self.respond_to?(:active) ? self.active : nil
       str = target.score + source.score
 

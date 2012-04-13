@@ -16,8 +16,9 @@ module Cleo
 
     def self.execute_create(con)
       obj = con.as_connection unless con.is_a?(Cleo::Xml::Connection)
+      return true if obj.blank?
 
-      uri = URI.parse Cloe::SErver.connection_url + "_"
+      uri = URI.parse Cleo::Service.connection_server_url + "_"
       request = Net::HTTP::Post.new(uri.path)
 
       request.body = obj.to_xml
@@ -30,6 +31,8 @@ module Cleo
 
     def self.execute_disable(con)
       sender = con.as_connection unless con.is_a?(Cleo::Xml::Connection)
+      return true if sender.blank?
+
       sender.active = false
 
       return self.execute_update(sender)
@@ -41,8 +44,9 @@ module Cleo
 
     def self.execute_update(con)
       sender = con.as_connection unless con.is_a?(Cleo::Xml::Connection)
+      return true if sender.blank?
 
-      uri = URI.parse Cleo::Service.connection_url + "_"
+      uri = URI.parse Cleo::Service.connection_server_url + "_"
       request = Net::HTTP::Post.new(uri.path)
 
       request.body = sender.to_xml
