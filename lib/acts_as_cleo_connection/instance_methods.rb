@@ -19,6 +19,7 @@ module ActsAsCleoConnection
     def to_cleo_connection
       source = self.send("#{cleo_origin}")
       target = self.send("#{cleo_target}")
+      type = self.respond_to?("#{cleo_type}") ? self.send("#{cleo_type}") : cleo_type
       return nil if target.blank? || source.blank?
 
       is_active = self.respond_to?(:active) ? self.active : nil
@@ -30,7 +31,7 @@ module ActsAsCleoConnection
       result.target = target.cleo_id
       result.active = is_active
       result.strength = str
-      result.type = self.cleo_type
+      result.type = type
 
       return result
     end

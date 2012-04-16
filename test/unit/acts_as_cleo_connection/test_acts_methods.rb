@@ -28,6 +28,6 @@ class TestActiveRecordCallbacHooks < Test::Unit::TestCase
 
     assert_equal con.cleo_origin, "book"
     assert_equal con.cleo_target, "author"
-    assert_equal con.cleo_type, "isaidso"
+    assert_equal con.cleo_type, "call_for_type_method"
   end
 end
