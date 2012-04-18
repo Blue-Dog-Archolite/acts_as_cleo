@@ -1,6 +1,6 @@
 class <%= migration_class_name %> < ActiveRecord::Migration
   def self.up
-    create_table :references do
+    create_table :cleo_references do |t|
       t.timestamps
       t.string :record_type
       t.integer :record_id
@@ -8,6 +8,6 @@ class <%= migration_class_name %> < ActiveRecord::Migration
   end
 
   def down
-    drop_table :references
+    drop_table :cleo_references
   end
 end
