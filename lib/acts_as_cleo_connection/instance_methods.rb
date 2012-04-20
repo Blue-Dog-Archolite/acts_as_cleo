@@ -23,7 +23,7 @@ module ActsAsCleoConnection
       return nil if target.blank? || source.blank?
 
       is_active = self.respond_to?(:active) ? self.active : nil
-      str = target.score + source.score
+      str = target.cleo_score + source.cleo_score
 
       result = Cleo::Xml::Connection.new
 

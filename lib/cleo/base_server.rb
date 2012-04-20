@@ -1,3 +1,5 @@
+require 'net/http'
+
 module Cleo
   class Base
     cattr_accessor :async

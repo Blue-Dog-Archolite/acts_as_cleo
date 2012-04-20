@@ -49,24 +49,29 @@ module ActsAsCleo
 
       cr.name = self.send(self.cleo_config[:name]).to_s.downcase
       cr.name = cr.term.first if cr.name.blank?
+      cr.name = cr.name.gsub('&', 'and')
 
-      cr.score = self.score
-
+      cr.score = self.cleo_score
 
       cr
     end
 
     alias :as_cleo :to_cleo_result
 
-    def score
-      score = self.send(self.cleo_config[:score])
-      if score.nil?
-        return 0
-      elsif score.respond_to?("count")
-        return score.count
+    def cleo_score
+      s = self.send(self.cleo_config[:score])
+
+      begin
+        return Float(s)
+      rescue ArgumentError => e
+        if s.nil?
+          return 0
+        elsif s.respond_to?("count")
+          return s.count
+        end
       end
 
-      return score
+      return s
     end
 
 
@@ -81,8 +86,9 @@ module ActsAsCleo
     private
     def clean_terms_for_storage(to_process)
       to_process = to_process.compact.flatten.reject(&:blank?)
-      to_process.collect!{|i| i.split(/\s+/) }.compact.uniq
-      to_process.reject{|i| drop_words.include?(i) }
+      to_process.collect!{|i| i.split(/\W+/).collect(&:strip) }.compact
+      to_process = to_process.reject{|i| drop_words.include?(i) }
+      to_process.uniq
     end
 
     def drop_words

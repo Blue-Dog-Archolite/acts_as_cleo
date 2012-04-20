@@ -1,8 +1,13 @@
 #Load Cleo Sub Modules
+
 require File.dirname(__FILE__) + '/base_server'
 require File.dirname(__FILE__) + '/connection_server'
 require File.dirname(__FILE__) + '/element_server'
 require File.dirname(__FILE__) + '/service'
+require File.dirname(__FILE__) + '/element'
+
+require 'resque'
+
 
 module Cleo
   def self.query(query)

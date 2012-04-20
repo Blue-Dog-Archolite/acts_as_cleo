@@ -13,7 +13,7 @@ module ActsAsCleo
 
       #Config file
       copy_file 'cleo.yml', "config/cleo.yml"
-      copy_file 'cleo_initalizer.rb', 'config/initalizers/cleo_initalizer.rb'
+      copy_file 'cleo_initalizer.rb', 'config/initializers/cleo_initalizer.rb'
 
       #Resque workers
       copy_file "jobs/cleo_connection_processor.rb", "app/jobs/cleo_connection_processor.rb"

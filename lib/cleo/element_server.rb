@@ -66,7 +66,8 @@ module Cleo
     def self.execute_create(obj)
       obj = obj.to_cleo_result unless obj.is_a?(Cleo::Xml::Result)
 
-      uri = URI.parse self.url + "_"
+
+      uri = URI.parse Cleo::Service.element_server_url + "_"
       request = Net::HTTP::Post.new(uri.path)
 
       request.body = obj.to_xml
