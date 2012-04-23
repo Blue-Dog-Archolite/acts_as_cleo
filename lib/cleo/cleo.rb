@@ -14,6 +14,9 @@ module Cleo
     Cleo::ElementServer.query(query)
   end
 
+  def self.network_query(source_id, query)
+  end
+
   def self.net_http
     uri = URI.parse(Cleo::Service.url)
     Net::HTTP.new(uri.host, uri.port)
@@ -26,9 +29,12 @@ module Cleo
   end
 
   def self.flush
-    uri = URI.parse Cleo::Service.url + "elements/flush"
-    request = Net::HTTP::Post.new(uri.path)
-    Net::HTTP.new(uri.host, uri.port).start { |http| http.request request }
+    element_uri = URI.parse Cleo::Service.element_server_url + "/flush"
+    connection_uri = URI.parse Cleo::Service.connection_server_url + "/flush"
+    [element_uri, connection_uri].each do |uri|
+      request = Net::HTTP::Post.new(uri.path)
+      Net::HTTP.new(uri.host, uri.port).start { |http| http.request request }
+    end
   end
 
   def self.configure(new_config)
