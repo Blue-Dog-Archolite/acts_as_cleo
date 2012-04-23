@@ -1,4 +1,5 @@
 require 'net/http'
+require 'cgi'
 
 module Cleo
   class Base
