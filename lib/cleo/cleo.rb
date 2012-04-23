@@ -29,20 +29,21 @@ module Cleo
   end
 
   def self.flush
-    Cleo.flush_elements
-    Cleo.flush_connections
+    Cleo.flush_elements and Cleo.flush_connections
   end
 
   def self.flush_connections
-    uri = URI.parse Cleo::Service.connection_server_url + "/flush"
+    uri = URI.parse Cleo::Service.connection_server_url + "flush"
     request = Net::HTTP::Post.new(uri.path)
-    Net::HTTP.new(uri.host, uri.port).start { |http| http.request request }
+    response = Net::HTTP.new(uri.host, uri.port).start { |http| http.request request }
+    Cleo::Service.good_response_code?(response)
   end
 
   def self.flush_elements
-    uri = URI.parse Cleo::Service.element_server_url + "/flush"
+    uri = URI.parse Cleo::Service.element_server_url + "flush"
     request = Net::HTTP::Post.new(uri.path)
-    Net::HTTP.new(uri.host, uri.port).start { |http| http.request request }
+    response = Net::HTTP.new(uri.host, uri.port).start { |http| http.request request }
+    Cleo::Service.good_response_code?(response)
   end
 
   def self.configure(new_config)
