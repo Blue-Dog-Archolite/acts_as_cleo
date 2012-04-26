@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robert R. Meyer"]
-  s.date = "2012-04-11"
+  s.date = "2012-04-26"
   s.description = "LinkedIn Open Source type ahead tool's REST API as a ruby gem. Now with Reddis support."
   s.email = "Blue.Dog.Archolite@gmail.com"
   s.extra_rdoc_files = [
@@ -30,7 +30,6 @@ Gem::Specification.new do |s|
     "lib/acts_as_cleo/class_methods.rb",
     "lib/acts_as_cleo/instance_methods.rb",
     "lib/acts_as_cleo/private_methods.rb",
-    "lib/acts_as_cleo/result.rb",
     "lib/acts_as_cleo/version.rb",
     "lib/acts_as_cleo_connection/acts_as_cleo_connection.rb",
     "lib/acts_as_cleo_connection/acts_methods.rb",
@@ -70,16 +69,21 @@ Gem::Specification.new do |s|
     "test/fixtures/electronics.yml",
     "test/fixtures/movies.yml",
     "test/helper.rb",
+    "test/models/author.rb",
     "test/models/book.rb",
+    "test/models/category.rb",
     "test/models/movie.rb",
     "test/test_install_generator.rb",
-    "test/unit/test_active_record_callback_hooks.rb",
-    "test/unit/test_acts_methods.rb",
-    "test/unit/test_class_methods.rb",
-    "test/unit/test_cleo.rb",
-    "test/unit/test_instance_methods.rb",
-    "test/unit/test_model_to_cleo.rb",
-    "test/unit/test_result_parser.rb"
+    "test/unit/acts_as_cleo/test_active_record_callback_hooks.rb",
+    "test/unit/acts_as_cleo/test_acts_methods.rb",
+    "test/unit/acts_as_cleo/test_class_methods.rb",
+    "test/unit/acts_as_cleo/test_instance_methods.rb",
+    "test/unit/acts_as_cleo_connection/test_active_record_callbacks.rb",
+    "test/unit/acts_as_cleo_connection/test_acts_methods.rb",
+    "test/unit/cleo/test_cleo.rb",
+    "test/unit/xml/test_model_to_cleo.rb",
+    "test/unit/xml/test_model_to_cleo_connection_test.rb",
+    "test/unit/xml/test_result_parser.rb"
   ]
   s.homepage = "http://github.com/blue-dog-archolite/acts_as_cleo"
   s.licenses = ["MIT"]
