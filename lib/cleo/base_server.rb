@@ -19,7 +19,6 @@ module Cleo
     def self.good_response_code?(response)
       case response
       when Net::HTTPOK
-        Cleo.flush if self.auto_flush?
         true   # success response
       when Net::HTTPClientError, Net::HTTPInternalServerError
         false  # non-success response
